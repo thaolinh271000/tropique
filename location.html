@@ -1,0 +1,373 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Location</title>
+    <link
+        rel="stylesheet"
+        href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"
+    />
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+    <link rel="stylesheet" href="root.css">
+
+    <style>
+        h1, h2, p {padding: 0; margin: 0;}
+        button, a {cursor: pointer;}
+        .header-inner {
+            background-color: white;
+            align-items: center;
+        }
+        .btn-menu svg {fill: var(--mainColor1);}
+        button {font-weight: 700;}
+        
+        .d-flex-column {display: flex; flex-direction: column;}
+        .d-flex-row {display: flex; flex-direction: row;}
+        .body {
+            gap: var(--mdDis);
+            margin-bottom: var(--lgDis);
+        }
+
+        .btn-std-details:hover {
+            color: white;
+            background-color: var(--mainColor2);
+        }
+        .btn-std:hover, .btn-std svg:hover {
+            background-color: var(--mainColor1);
+            fill: white;
+            color: white;
+        }
+
+        .banner {
+            height: 400px;
+            background-image: url(Pictures_Linh/about-us_pic2.jpg);
+            background-size: cover;
+            background-position: bottom;
+        }
+        .banner h1 {
+            color: white;
+            font-size: var(--fontSize4);
+        }
+        .banner > div {
+            background-color: rgba(0, 0, 0, 0.3);
+            height: 100%;
+        }
+
+        .intro .heading h1 {
+            font-size: var(--fontSize2);
+            font-weight: 400;
+        }
+        .intro .heading h2 {
+            font-weight: 700;
+            font-size: var(--fontSize1)
+        }
+        .intro {gap: var(--mdDis);}
+        .intro p {
+            font-size: var(--fontSize1);
+            text-align: justify;
+        }
+        .intro .heading {
+            flex-direction: column;
+            gap: var(--smDis);
+        }
+        .intro > ul {gap: var(--smDis);}
+        .intro li {gap: var(--smDis);}
+        .intro .line {
+            width: 100%; height: 1px;
+            background-color: var(--subColor2);
+            margin: var(--mdDis) 0;
+        }
+        .intro .content {gap: var(--mdDis);}
+
+        .direction .distance-time {
+            width: fit-content;
+            margin-left: auto; margin-right: auto;
+            gap: var(--smDis);
+        }
+        .direction {gap: var(--mdDis);}
+        .direction .instruction {display: none;}
+        .direction .text-map {
+            display: flex;
+            flex-direction: column;
+            gap: var(--mdDis);
+        } 
+
+        .local-attractions-swiper {padding-top: var(--mdDis);}
+        .local-attractions-swiper .swiper-slide img {
+            width: 100%; height: 100%;
+            object-fit: cover;
+            margin: 0; padding: 0;
+        }
+        .local-attractions-swiper .swiper-slide p {
+            color: white;
+            font-size: var(--fontSize4);
+            font-weight: 700;
+            position: absolute;
+            top: 80%;
+            left: 20%;
+            transform: translate(-20%, -80%);
+            padding-right: var(--mdDis);
+            text-align: right;
+            width: 100%;
+        }
+        .local-attractions-swiper .swiper-slide > div {
+            width: 100%; height: 100%;
+            background-color: rgba(0, 0, 0, 0.3);
+            position: absolute;
+        }
+        .local-attractions-swiper .swiper-slide {
+            width: 240px;
+            height: 150px;
+            box-shadow: 2px 2px 8px rgba(0, 0, 0, 0.25);
+            position: relative;
+        }
+        
+        .local-attractions-swiper .tron-det {margin: var(--smDis) 0 0 0;}
+
+
+        .local-attractions .swiper-slide::after {
+            content: 'View map';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background-color: rgba(0, 0, 0, 0.6);
+            color: white;
+            padding: 10px;
+            border-radius: 5px;
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.3s ease;
+            font-size: var(--fontSize3);
+        }
+
+        .local-attractions .swiper-slide:hover::after {
+            opacity: 1;
+        }
+
+
+/* ----------------------------------------------------------------- */
+
+        @media screen and (min-width:768px) {
+            .banner {height: 480px;}
+            .local-attractions-swiper .swiper-slide {width: 360px; height: 225px}
+        }
+
+        @media screen and (min-width:992px) {
+            .banner {height: 750px;}
+
+            .direction .instruction {
+                display: flex; flex-direction: column;
+                gap: var(--smDis);
+                text-align: justify;
+            }
+            .direction .instruction p {font-weight: 700;}
+            .direction .instruction ul {
+                margin: 0;
+                list-style-type: disc;
+            }
+            .direction .distance-time {margin: 0;}
+            .direction .text {
+                gap: var(--xlDis);
+                margin-top: auto; margin-bottom: auto;
+            }
+            .direction .text-map {
+                display: grid;
+                grid-template-columns: 2fr 3fr;
+                column-gap: var(--xlDis);
+                padding: 0 var(--mdDis);
+            }
+        }
+    </style>
+</head>
+<body>
+    <header class="max-container">
+        <!-- Header -->
+        <section class="header-inner padding-xy max-container">
+    
+            <!-- Button Menu -->
+            <button class="btn-menu d-md-none" id="btn-menu">
+                <svg>
+                    <rect class="top" width="24" height="3" x="2" y="5"></rect>
+                    <rect class="mid" width="24" height="3" x="2" y="13"></rect>
+                    <rect class="bot" width="24" height="3" x="2" y="21"></rect>
+                </svg>
+            </button>
+    
+            <!-- Logo -->
+            <a href="homepage.html" class="link-logo center-flex">
+                <img src="general_pictures/logo_horizontal_2.svg" alt="">
+            </a>
+    
+            <!-- Booking -->
+            <button class="btn-std link-shop d-none d-md-flex"><a href="booking_page.html">Book Now</a></button>
+            <button class="btn-std btn-icon-only link-shop d-md-none"><a href=""></a><svg xmlns="http://www.w3.org/2000/svg" height="16" width="14" viewBox="0 0 448 512"><!--!Font Awesome Free 6.5.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2024 Fonticons, Inc.--><path d="M128 0c17.7 0 32 14.3 32 32V64H288V32c0-17.7 14.3-32 32-32s32 14.3 32 32V64h48c26.5 0 48 21.5 48 48v48H0V112C0 85.5 21.5 64 48 64H96V32c0-17.7 14.3-32 32-32zM0 192H448V464c0 26.5-21.5 48-48 48H48c-26.5 0-48-21.5-48-48V192zm64 80v32c0 8.8 7.2 16 16 16h32c8.8 0 16-7.2 16-16V272c0-8.8-7.2-16-16-16H80c-8.8 0-16 7.2-16 16zm128 0v32c0 8.8 7.2 16 16 16h32c8.8 0 16-7.2 16-16V272c0-8.8-7.2-16-16-16H208c-8.8 0-16 7.2-16 16zm144-16c-8.8 0-16 7.2-16 16v32c0 8.8 7.2 16 16 16h32c8.8 0 16-7.2 16-16V272c0-8.8-7.2-16-16-16H336zM64 400v32c0 8.8 7.2 16 16 16h32c8.8 0 16-7.2 16-16V400c0-8.8-7.2-16-16-16H80c-8.8 0-16 7.2-16 16zm144-16c-8.8 0-16 7.2-16 16v32c0 8.8 7.2 16 16 16h32c8.8 0 16-7.2 16-16V400c0-8.8-7.2-16-16-16H208zm112 16v32c0 8.8 7.2 16 16 16h32c8.8 0 16-7.2 16-16V400c0-8.8-7.2-16-16-16H336c-8.8 0-16 7.2-16 16z"/></svg></button>
+            </a>
+        </section>
+        <nav class="the-menu max-container">
+            <div class="swiper">
+                <div class="swiper-wrapper">
+                    <a href="homepage.html" class="swiper-slide link-logo-mobile"><img src="general_pictures/logo_horizontal_2.svg" alt=""> </a>
+                    <a href="about-us.html" class="swiper-slide">About Us</a>
+                    <a href="Villas_and_Rooms.html" class="swiper-slide">Rooms & Villas</a>
+                    <a href="restaurants-bars.html" class="swiper-slide">Restaurant & Bars</a>
+                    <a href="facilities.html" class="swiper-slide">Facilities</a>
+                    <a href="Special_offers.html" class="swiper-slide">Special Offers</a>
+                    <a href="gallery.html" class="swiper-slide">Gallery</a>
+                    <a href="contact-us1.html" class="swiper-slide">Contact Us</a>
+                </div>
+            </div>
+        </nav>
+    </header>
+<!-- Header (end) -->
+
+    <section class="body d-flex-column max-container">
+        <div class="banner">
+            <div class="center-flex"><h1>Location</h1></div>
+        </div>
+
+        <div class="intro padding-x d-flex-column">
+            <div class="heading center-flex">
+                <h1>'NHA TRANG'</h1>
+                <h2>VIETNAM'S BEST BEACH CITY</h2>
+            </div>
+            <ul class="reset-list center-flex d-flex-column">
+                <li class="d-flex-row">
+                    <img src="Pictures_Linh/icon-address.svg" alt="">
+                    <p>No 22, Street ABCD, Nha Trang, Vietnam</p>
+                </li>
+                <li class="d-flex-row">
+                    <img src="Pictures_Linh/icon-phone.svg" alt="">
+                    <a href="tel:012345678"><p>(+84) 012 345 678</p></a>
+                </li>
+            </ul>
+            <div class="line"></div>
+            <div class="content d-flex-column">
+                <p>Nha Trang, the idyllic coastal gem of Vietnam, cradles the exquisite Tropique Hotel within its embrace. With its sun-drenched beaches lapped by the azure waves of the East Vietnam Sea, Nha Trang sets the perfect stage for Tropique's tranquil retreat. This tropical haven, nestled between verdant mountains and the sparkling ocean, invites guests to immerse themselves in a sanctuary where luxury meets the natural beauty of Vietnam's captivating landscapes. Whether you're basking in the sun-dappled shores, exploring vibrant coral reefs, or indulging in the modern amenities of Tropique Hotel, Nha Trang promises a harmonious blend of relaxation and adventure.</p>
+                <p>As the sun paints the skies with hues of warmth, Nha Trang unveils its cultural tapestry. Temples steeped in history, French colonial remnants, and the vibrant pulse of Vietnamese life converge in a cityscape that mirrors the diverse charm of Tropique itself. From the bustling seafood markets to the tranquil boat cruises, every corner of Nha Trang echoes the promise of an enriching escape. Tropique Hotel, with its commitment to luxury and tranquility, becomes not just a destination but a seamless part of Nha Trang's vibrant narrative, inviting travelers to discover the perfect synthesis of natural beauty, cultural exploration, and coastal indulgence.</p>
+            </div>
+        </div>
+        <div class="direction d-flex-column">
+            <h1 class="section-heading padding-x"><span>Arrival from Cam Ranh Airport</span></h1>
+            <div class="text-map">
+                <div class="text d-flex-column">
+                    <div class="distance-time d-flex-column">
+                        <p>Distance: 38 kilometers</p>
+                        <p>Travel time: 40 minutes</p>
+                    </div>
+                    <div class="instruction">
+                        <p>Instruction:</p>
+                        <ul>
+                            <li>Exit the airport and head southwest toward Route 657.</li>
+                            <li>Turn right onto Route 657 and continue for approximately 10 kilometers.</li>
+                            <li>At the roundabout, take the second exit onto Tran Phu Street.</li>
+                            <li>Follow Tran Phu Street for about 5 kilometers until you reach the hotel located on the right-hand side.</li>
+                            <li>Tropique will be easily visible and accessible from Tran Phu Street.</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3902.659039085408!2d109.21899839999999!3d11.998078200000002!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x31708cee93fc2047%3A0xda82d1989dcb43ea!2sCam%20Ranh%20International%20Airport!5e0!3m2!1sen!2s!4v1705704871421!5m2!1sen!2s" width="100%" height="400" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+            </div>
+        </div>
+
+        <div class="local-attractions d-flex-column">
+            <h1 class="section-heading padding-x"><span>Local Attractions</span></h1>
+            <div class="local-attractions-swiper">
+                <div class="swiper">
+                    <div class="swiper-wrapper">
+                        <a href="https://maps.app.goo.gl/pRWsgtaqp9YiyskaA" target="_blank" class="swiper-slide">
+                            <div><p>Hon Chong</p></div>
+                            <img src="Pictures_Linh/location_hon-chong.jpg" alt="">
+                        </a>
+                        <a href="https://maps.app.goo.gl/iwnAJw5bEn3iSdbm9" target="_blank" class="swiper-slide">
+                            <div><p>VinWonders</p></div>
+                            <img src="Pictures_Linh/location_vinpearl.jpg" alt="">
+                        </a>
+                        <a href="https://maps.app.goo.gl/YE2HSss5PRWE2ywZ8" target="_blank" class="swiper-slide">
+                            <div><p>Ponagar<br>Cham Towers</p></div>
+                            <img src="Pictures_Linh/location_thap-ba.jpg" alt="">
+                        </a>
+                        <a href="https://maps.app.goo.gl/yvLiHnnTZueHaHZg7" target="_blank" class="swiper-slide">
+                            <div><p>Hon Tam<br>Island</p></div>
+                            <img src="Pictures_Linh/location_swimming.jpg" alt="">
+                        </a>
+                    </div>
+                    <div class="tron-det"></div>
+                </div>
+            </div>
+        </div>
+</section>    
+
+<!-- Footer (start) --> 
+<footer class="max-container">
+    <section class="footer-inner padding-xy max-container">
+        <div class="shop-name link-logo">
+            <a href="homepage.html"> <img src="general_pictures/logo_horizontal_3.svg" alt=""></a>   
+        </div>
+        <div class="footer-contact">
+            <p>Sign up for offers</p>
+            <div class="footer-email">
+                <input class="fill-email" type="text" placeholder="email@example.com">   
+                <button class="btn-primary btn-send" type=""><svg xmlns="http://www.w3.org/2000/svg" height="16" width="16" viewBox="0 0 512 512"><!--!Font Awesome Free 6.5.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2024 Fonticons, Inc.--><path d="M502.6 278.6c12.5-12.5 12.5-32.8 0-45.3l-128-128c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3L402.7 224 32 224c-17.7 0-32 14.3-32 32s14.3 32 32 32l370.7 0-73.4 73.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0l128-128z"/></svg></button>
+            </div>
+            <div class="social-links">
+                <a href="" class="btn-primary social-links-icons"><svg xmlns="http://www.w3.org/2000/svg" height="16" width="10" viewBox="0 0 320 512"><!--!Font Awesome Free 6.5.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2024 Fonticons, Inc.--><path d="M80 299.3V512H196V299.3h86.5l18-97.8H196V166.9c0-51.7 20.3-71.5 72.7-71.5c16.3 0 29.4 .4 37 1.2V7.9C291.4 4 256.4 0 236.2 0C129.3 0 80 50.5 80 159.4v42.1H14v97.8H80z"/></svg></a>
+                <a href="" class="btn-primary social-links-icons"><svg xmlns="http://www.w3.org/2000/svg" height="16" width="14" viewBox="0 0 448 512"><!--!Font Awesome Free 6.5.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2024 Fonticons, Inc.--><path d="M224.1 141c-63.6 0-114.9 51.3-114.9 114.9s51.3 114.9 114.9 114.9S339 319.5 339 255.9 287.7 141 224.1 141zm0 189.6c-41.1 0-74.7-33.5-74.7-74.7s33.5-74.7 74.7-74.7 74.7 33.5 74.7 74.7-33.6 74.7-74.7 74.7zm146.4-194.3c0 14.9-12 26.8-26.8 26.8-14.9 0-26.8-12-26.8-26.8s12-26.8 26.8-26.8 26.8 12 26.8 26.8zm76.1 27.2c-1.7-35.9-9.9-67.7-36.2-93.9-26.2-26.2-58-34.4-93.9-36.2-37-2.1-147.9-2.1-184.9 0-35.8 1.7-67.6 9.9-93.9 36.1s-34.4 58-36.2 93.9c-2.1 37-2.1 147.9 0 184.9 1.7 35.9 9.9 67.7 36.2 93.9s58 34.4 93.9 36.2c37 2.1 147.9 2.1 184.9 0 35.9-1.7 67.7-9.9 93.9-36.2 26.2-26.2 34.4-58 36.2-93.9 2.1-37 2.1-147.8 0-184.8zM398.8 388c-7.8 19.6-22.9 34.7-42.6 42.6-29.5 11.7-99.5 9-132.1 9s-102.7 2.6-132.1-9c-19.6-7.8-34.7-22.9-42.6-42.6-11.7-29.5-9-99.5-9-132.1s-2.6-102.7 9-132.1c7.8-19.6 22.9-34.7 42.6-42.6 29.5-11.7 99.5-9 132.1-9s102.7-2.6 132.1 9c19.6 7.8 34.7 22.9 42.6 42.6 11.7 29.5 9 99.5 9 132.1s2.7 102.7-9 132.1z"/></svg></a>
+                <a href="" class="btn-primary social-links-icons"><svg xmlns="http://www.w3.org/2000/svg" height="16" width="16" viewBox="0 0 512 512"><!--!Font Awesome Free 6.5.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2024 Fonticons, Inc.--><path d="M389.2 48h70.6L305.6 224.2 487 464H345L233.7 318.6 106.5 464H35.8L200.7 275.5 26.8 48H172.4L272.9 180.9 389.2 48zM364.4 421.8h39.1L151.1 88h-42L364.4 421.8z"/></svg></a>
+            </div>
+        </div>
+        <div class="footer-menu">
+            <ul class="reset-list">
+                <li><a href="about-us.html">About Us</a></li>
+                <li><a href="Villas_and_Rooms.html">Rooms & Villas
+                </a></li>
+                <li><a href="restaurants-bars.html">Restaurant & Bars
+                </a></li>
+                <li><a href="facilities.html">Facilities</a></li>
+                <li><a href="Special_offers.html">Special Offers</a></li>
+                <li><a href="gallery.html">Gallery
+                </a></li>
+                <li><a href="contact-us1.html">Contact Us</a></li>
+                <li><a href="terms&conditions.html">Terms & Conditions</a></li>
+                
+            </ul>
+        </div>
+        <div class="shop-info">
+            <p>No 22, Street ABCD, Nha Trang, Vietnam
+            </p>
+            <p>Tel: <a href="tel:012345678">(+84) 012 345 678</a></p>
+            
+        </div>
+    </section>
+</footer>
+<!-- Footer (end) -->
+
+    <script>
+        const menuNgang = new Swiper (`.the-menu .swiper`, {
+            slidesPerView: 'auto', spaceBetween: 20
+        })
+        document.getElementById(`btn-menu`).addEventListener(`click`, (e) => {
+            document.body.classList.toggle(`show-menu`);
+        })
+
+// --------------------------------------------------------------------------------
+
+        const localSwiper = new Swiper(`.local-attractions-swiper .swiper`, {
+            loop: true,
+            spaceBetween: 20,
+            centeredSlides: true,
+            slidesPerView: 2,
+            breakpoints: {
+                768: {
+                    slidesPerView: 2,
+                },
+                992: {
+                    slidesPerView: 3,
+                },
+            },
+            pagination: { el: `.local-attractions-swiper .tron-det` }
+        });
+    </script>
+</body>
+</html>

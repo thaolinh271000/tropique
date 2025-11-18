@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link
+    rel="stylesheet"
+    href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"
+    />
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+    <link rel="stylesheet" href="root.css">
+
+    <style>
+        h1, h2, p {padding: 0; margin: 0;}
+        .body {padding-bottom: var(--mdDis);}
+        
+        .btn-menu svg {fill: var(--mainColor1);}
+        button {font-weight: 700;}
+        
+        .d-flex-column {display: flex; flex-direction: column;}
+        .d-flex-row {display: flex; flex-direction: row;}
+        .body {gap: var(--mdDis);}
+
+        .center-flex {display: flex; justify-content: center; align-items: center;}
+        .banner {
+            height: 400px;
+            background-image: url(facilities_pictures/pic1.jpg);
+            background-size: cover; background-position: center;
+        }
+        .banner h1 {
+            color: white;
+            font-size: var(--fontSize4);
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            text-align: center;
+            width: 100%;
+        }
+        
+        .logo-homepage {padding-top: var(--mdDis);}
+        .logo-homepage img {width: 320px;}
+        .intro h1 {
+            font-size: var(--fontSize2);
+            font-weight: 400;
+        }
+        .intro h2 {
+            font-weight: 700;
+            font-size: var(--fontSize1)
+        }
+        .intro {gap: var(--mdDis);}
+        .intro p {
+            font-size: var(--fontSize1);
+            text-align: justify;
+        }
+        .intro .heading {
+            flex-direction: column;
+            gap: var(--smDis);
+        }
+
+        .feature-list, .feature-list .content, .feature-list .content .text {
+            display: flex;
+            flex-direction: column;
+            gap: var(--mdDis);
+        }
+        .feature-list li {
+            display: flex;
+            flex-direction: column;
+            gap: var(--mdDis);
+        }
+        .feature-list h1 {text-align: center;}
+        
+        .feature-list .pic {
+            height: 225px;
+            background-size: cover;
+            box-shadow: 2px 2px 8px rgba(0, 0, 0, 0.25);
+        }
+        .feature-list .pic1 {background-image: url(facilities_pictures/pic2.jpg);}
+        .feature-list .pic2 {
+            background-image: url(facilities_pictures/pic3.jpg);
+            background-position: bottom;
+        }
+        .feature-list .pic3 {background-image: url(facilities_pictures/pic4.jpg);}
+        .feature-list .pic4 {background-image: url(facilities_pictures/pic5.jpg);}
+        .feature-list .text p {
+            font-weight: 400;
+            padding: 0 var(--mdDis);
+            text-align: justify;
+        }
+        .feature-list .text p:nth-child(n+2) {display: none;}
+
+        button.btn-std-details {
+            width: fit-content;
+            margin-left: auto; margin-right: auto;
+        }
+        .footer-inner {margin-top: var(--mdDis);}
+
+        @media screen and (min-width:768px) {
+            .banner {height: 480px;}
+            
+            .logo-homepage img {width: 400px;}
+            
+            .feature-list .content {
+                width: fit-content;
+                flex-direction: row;
+                padding: 0 var(--mdDis);
+                align-items: center;
+            }
+            .feature-list .pic {
+                width: 50%;
+                height: 225px;
+                
+            }
+            .feature-list .text {
+                padding: 0;
+                width: 50%;
+                align-items: center;
+            }
+            .feature-list .text p {
+                padding: 0;
+            }
+            .feature-list li:nth-child(3) h1 br {display: none;}
+            .feature-list li:nth-child(2n) .content .pic {order: 2;}
+            .feature-list li:nth-child(n) .content .text {align-items: flex-start;}
+            .feature-list li:nth-child(2n) .content .text {align-items: flex-end;}
+        }
+
+        @media screen and (min-width:992px) {
+            .banner {height: 750px;}
+            .banner-review {display: flex; flex-wrap: wrap; gap: var(--mdDis);}
+            .feature-list .content {
+                gap: var(--mdDis);
+                width: fit-content;
+            }
+            .feature-list .text {width: 100%;}
+            .feature-list .text p:nth-child(n+2) {display: block;}
+        }
+    </style>
+</head>
+
+<body>
+
+<!-- Header (start) -->
+<header class="max-container">
+    <!-- Header -->
+    <section class="header-inner padding-xy max-container">
+
+        <!-- Button Menu -->
+        <button class="btn-menu d-md-none" id="btn-menu">
+            <svg>
+                <rect class="top" width="24" height="3" x="2" y="5"></rect>
+                <rect class="mid" width="24" height="3" x="2" y="13"></rect>
+                <rect class="bot" width="24" height="3" x="2" y="21"></rect>
+            </svg>
+        </button>
+
+        <!-- Logo -->
+        <a href="index.html" class="link-logo center-flex">
+            <img src="general_pictures/logo_horizontal_2.svg" alt="">
+        </a>
+
+        <!-- Booking -->
+        <button class="btn-std link-shop d-none d-md-flex"><a href="booking_page.html">Book Now</a></button>
+        <button class="btn-std btn-icon-only link-shop d-md-none"><a href=""></a><svg xmlns="http://www.w3.org/2000/svg" height="16" width="14" viewBox="0 0 448 512"><!--!Font Awesome Free 6.5.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2024 Fonticons, Inc.--><path d="M128 0c17.7 0 32 14.3 32 32V64H288V32c0-17.7 14.3-32 32-32s32 14.3 32 32V64h48c26.5 0 48 21.5 48 48v48H0V112C0 85.5 21.5 64 48 64H96V32c0-17.7 14.3-32 32-32zM0 192H448V464c0 26.5-21.5 48-48 48H48c-26.5 0-48-21.5-48-48V192zm64 80v32c0 8.8 7.2 16 16 16h32c8.8 0 16-7.2 16-16V272c0-8.8-7.2-16-16-16H80c-8.8 0-16 7.2-16 16zm128 0v32c0 8.8 7.2 16 16 16h32c8.8 0 16-7.2 16-16V272c0-8.8-7.2-16-16-16H208c-8.8 0-16 7.2-16 16zm144-16c-8.8 0-16 7.2-16 16v32c0 8.8 7.2 16 16 16h32c8.8 0 16-7.2 16-16V272c0-8.8-7.2-16-16-16H336zM64 400v32c0 8.8 7.2 16 16 16h32c8.8 0 16-7.2 16-16V400c0-8.8-7.2-16-16-16H80c-8.8 0-16 7.2-16 16zm144-16c-8.8 0-16 7.2-16 16v32c0 8.8 7.2 16 16 16h32c8.8 0 16-7.2 16-16V400c0-8.8-7.2-16-16-16H208zm112 16v32c0 8.8 7.2 16 16 16h32c8.8 0 16-7.2 16-16V400c0-8.8-7.2-16-16-16H336c-8.8 0-16 7.2-16 16z"/></svg></button>
+        </a>
+    </section>
+    <nav class="the-menu max-container">
+        <div class="swiper">
+            <div class="swiper-wrapper">
+                <a href="index.html" class="swiper-slide link-logo-mobile"><img src="general_pictures/logo_horizontal_2.svg" alt=""> </a>
+                <a href="about-us.html" class="swiper-slide">About Us</a>
+                <a href="Villas_and_Rooms.html" class="swiper-slide">Rooms & Villas</a>
+                <a href="restaurants-bars.html" class="swiper-slide">Restaurant & Bars</a>
+                <a href="facilities.html" class="swiper-slide">Facilities</a>
+                <a href="Special_offers.html" class="swiper-slide">Special Offers</a>
+                <a href="gallery.html" class="swiper-slide">Gallery</a>
+                <a href="contact-us1.html" class="swiper-slide">Contact Us</a>
+            </div>
+        </div>
+    </nav>
+</header>
+<!-- Header (end) -->
+
+    <section class="body  max-container">
+        <div class="banner">
+            <div class="center-flex"><h1>Facilities</h1></div>
+        </div>
+        
+        <div class="intro padding-x d-flex-column">
+            <div class="logo-homepage center-flex">
+                <a href="index.html"><img src="general_pictures/logo_horizontal_2.svg" alt=""></a>
+             </div>
+            <p>Welcome to Tropique Hotel, where luxury meets convenience, and every aspect of your stay is meticulously curated for your utmost comfort. Our array of world-class facilities promises to elevate your experience, catering to both leisure and business needs.</p>
+            <p>Indulge in our exclusive Villa Pools, a serene oasis where tranquility and relaxation converge. Immerse yourself in crystal-clear waters surrounded by lush greenery, offering a secluded retreat for ultimate rejuvenation.</p>
+            <p>Stay active and invigorated at our state-of-the-art GYM & Fitness center, equipped with top-of-the-line amenities and expert trainers to help you maintain your wellness routine during your stay.</p>
+            <p>Pamper your senses at our luxurious SPA, where a range of rejuvenating treatments awaits, designed to soothe your body and soul, leaving you feeling refreshed and revitalized.</p>
+            <p>For business or social gatherings, our sophisticated Meeting Rooms provide the perfect venue, equipped with modern technology and impeccable service to ensure your events are successful and memorable.</p>
+            <p>At Tropique Hotel, our facilities are crafted to cater to your every need, promising an exquisite blend of relaxation, fitness, wellness, and convenience throughout your stay.</p>
+        </div>
+
+        <ul class="max-container reset-list feature-list">
+            <li>
+                <h1 class="section-heading padding-x"><span>Villa Pools</span></h1>
+                <div class="content">
+                    <div class="pic pic1"></div>
+                    <div class="text">
+                        <p>Designed to exceed your expectations, our Villa Pools are more than just a place to swim; they are a sanctuary where time stands still. Whether you seek a refreshing morning dip, a sun-kissed afternoon lounging on a private cabana, or a leisurely evening under the stars, these pools offer an idyllic escape from the ordinary.</p>
+                        <a href="villa_pools.html"><button class="btn-std-details">Details</button></a>
+                    </div> 
+                </div>
+            </li>
+            <li>
+                <h1 class="section-heading padding-x"><span>GYM & Fitness</span></h1>
+                <div class="content">
+                    <div class="pic pic2"></div>
+                    <div class="text">
+                        <p>Immerse yourself in a world of health and vitality as our experienced trainers stand ready to assist and guide you toward achieving your fitness goals. Whether you seek a rigorous workout or prefer a more relaxed exercise regimen, our GYM & Fitness center provides the perfect environment to rejuvenate both mind and body.</p>
+                        <a href="gym_fitness.html"><button class="btn-std-details">Details</button></a>
+                    </div> 
+                </div>
+            </li>
+            <li>
+                <h1 class="section-heading padding-x"><span>SPA</span></h1>
+                <div class="content">
+                    <div class="pic pic3"></div>
+                    <div class="text">
+                        <p>
+                            Nestled amidst verdant tropical gardens, our SPA offers a sanctuary of serenity, evoking the natural beauty and harmony synonymous with our locale. Drawing from indigenous botanicals, aromatic herbs, and local fruits, our curated treatments promise an authentic and revitalizing experience.
+                        </p>
+                        <a href="spa.html"><button class="btn-std-details">Details</button></a>
+                    </div> 
+                </div>
+            </li>
+            <li>
+                <h1 class="section-heading padding-x"><span>Meeting Room</span></h1>
+                <div class="content">
+                    <div class="pic pic4"></div>
+                    <div class="text">
+                        <p>
+                            Nestled within our tropical oasis, our versatile venue offers an ideal blend of professionalism and relaxation. With state-of-the-art amenities and a serene ambiance, our Meeting Room allows you to conduct business in a tranquil setting surrounded by the beauty of our lush surroundings.
+                        </p>
+                        <a href="meeting_room.html"><button class="btn-std-details">Details</button></a>
+                    </div> 
+                </div>
+            </li>
+        </ul>
+    
+    <!-- End Body -->
+    <footer>
+        <section class="footer-inner padding-xy max-container">
+            <div class="shop-name link-logo">
+                <a href="index.html"> <img src="general_pictures/logo_horizontal_3.svg" alt=""></a>   
+            </div>
+            <div class="footer-contact">
+                <p>Sign up for offers</p>
+                <div class="footer-email">
+                    <input class="fill-email" type="text" placeholder="email@example.com">   
+                    <button class="btn-primary btn-send" type=""><svg xmlns="http://www.w3.org/2000/svg" height="16" width="16" viewBox="0 0 512 512"><!--!Font Awesome Free 6.5.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2024 Fonticons, Inc.--><path d="M502.6 278.6c12.5-12.5 12.5-32.8 0-45.3l-128-128c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3L402.7 224 32 224c-17.7 0-32 14.3-32 32s14.3 32 32 32l370.7 0-73.4 73.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0l128-128z"/></svg></button>
+                </div>
+                <div class="social-links">
+                    <a href="" class="btn-primary social-links-icons"><svg xmlns="http://www.w3.org/2000/svg" height="16" width="10" viewBox="0 0 320 512"><!--!Font Awesome Free 6.5.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2024 Fonticons, Inc.--><path d="M80 299.3V512H196V299.3h86.5l18-97.8H196V166.9c0-51.7 20.3-71.5 72.7-71.5c16.3 0 29.4 .4 37 1.2V7.9C291.4 4 256.4 0 236.2 0C129.3 0 80 50.5 80 159.4v42.1H14v97.8H80z"/></svg></a>
+                    <a href="" class="btn-primary social-links-icons"><svg xmlns="http://www.w3.org/2000/svg" height="16" width="14" viewBox="0 0 448 512"><!--!Font Awesome Free 6.5.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2024 Fonticons, Inc.--><path d="M224.1 141c-63.6 0-114.9 51.3-114.9 114.9s51.3 114.9 114.9 114.9S339 319.5 339 255.9 287.7 141 224.1 141zm0 189.6c-41.1 0-74.7-33.5-74.7-74.7s33.5-74.7 74.7-74.7 74.7 33.5 74.7 74.7-33.6 74.7-74.7 74.7zm146.4-194.3c0 14.9-12 26.8-26.8 26.8-14.9 0-26.8-12-26.8-26.8s12-26.8 26.8-26.8 26.8 12 26.8 26.8zm76.1 27.2c-1.7-35.9-9.9-67.7-36.2-93.9-26.2-26.2-58-34.4-93.9-36.2-37-2.1-147.9-2.1-184.9 0-35.8 1.7-67.6 9.9-93.9 36.1s-34.4 58-36.2 93.9c-2.1 37-2.1 147.9 0 184.9 1.7 35.9 9.9 67.7 36.2 93.9s58 34.4 93.9 36.2c37 2.1 147.9 2.1 184.9 0 35.9-1.7 67.7-9.9 93.9-36.2 26.2-26.2 34.4-58 36.2-93.9 2.1-37 2.1-147.8 0-184.8zM398.8 388c-7.8 19.6-22.9 34.7-42.6 42.6-29.5 11.7-99.5 9-132.1 9s-102.7 2.6-132.1-9c-19.6-7.8-34.7-22.9-42.6-42.6-11.7-29.5-9-99.5-9-132.1s-2.6-102.7 9-132.1c7.8-19.6 22.9-34.7 42.6-42.6 29.5-11.7 99.5-9 132.1-9s102.7-2.6 132.1 9c19.6 7.8 34.7 22.9 42.6 42.6 11.7 29.5 9 99.5 9 132.1s2.7 102.7-9 132.1z"/></svg></a>
+                    <a href="" class="btn-primary social-links-icons"><svg xmlns="http://www.w3.org/2000/svg" height="16" width="16" viewBox="0 0 512 512"><!--!Font Awesome Free 6.5.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2024 Fonticons, Inc.--><path d="M389.2 48h70.6L305.6 224.2 487 464H345L233.7 318.6 106.5 464H35.8L200.7 275.5 26.8 48H172.4L272.9 180.9 389.2 48zM364.4 421.8h39.1L151.1 88h-42L364.4 421.8z"/></svg></a>
+                </div>
+            </div>
+            <div class="footer-menu">
+                <ul class="reset-list">
+                    <li><a href="about-us.html">About Us</a></li>
+                    <li><a href="Villas_and_Rooms.html">Rooms & Villas
+                    </a></li>
+                    <li><a href="restaurants-bars.html">Restaurant & Bars
+                    </a></li>
+                    <li><a href="facilities.html">Facilities</a></li>
+                    <li><a href="Special_offers.html">Special Offers</a></li>
+                    <li><a href="gallery.html">Gallery
+                    </a></li>
+                    <li><a href="contact-us1.html">Contact Us</a></li>
+                    <li><a href="terms&conditions.html">Terms & Conditions</a></li>
+                    
+                </ul>
+            </div>
+            <div class="shop-info">
+                <p>No 22, Street ABCD, Nha Trang, Vietnam
+                </p>
+                <p>Tel: <a href="tel:012345678">(+84) 012 345 678</a></p>
+                
+            </div>
+        </section>
+    </footer>
+</section>
+    <script>
+        const menuNgang = new Swiper (`.the-menu .swiper`, {
+            slidesPerView: 'auto', spaceBetween: 20
+        })
+        document.getElementById(`btn-menu`).addEventListener(`click`, (e) => {
+            document.body.classList.toggle(`show-menu`);
+        })
+    </script>
+</body>
+</html>

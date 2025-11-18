@@ -1,0 +1,594 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Our Hotel</title>
+    <link
+        rel="stylesheet"
+        href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"
+    />
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+    <link rel="stylesheet" href="root.css">
+    
+    <style>
+        h1, h2, p {padding: 0; margin: 0;}
+        button, a {cursor: pointer;}
+        .header-inner {
+            background-color: white;
+            align-items: center;
+        }
+        .btn-menu svg {fill: var(--mainColor1);}
+        button {font-weight: 700;}
+        
+        .d-flex-column {display: flex; flex-direction: column;}
+        .d-flex-row {display: flex; flex-direction: row;}
+        .body {
+            gap: var(--mdDis);
+            margin-bottom: var(--lgDis);
+        }
+
+        .banner {
+            height: 400px;
+            background-image: url(Pictures_Linh/about-us_pic1.jpg);
+            background-size: cover;
+        }
+        .banner h1 {
+            color: white;
+            font-size: var(--fontSize4);
+        }
+        .banner > div {
+            background-color: rgba(0, 0, 0, 0.3);
+            height: 100%;
+        }
+
+        .intro {gap: var(--mdDis);}
+        .intro p {
+            font-size: var(--fontSize1);
+            text-align: justify;
+        }
+
+        .our-hotel-swiper {padding-top: var(--mdDis);}
+        .our-hotel-swiper .swiper-wrapper img {
+            width: 100%; height: 100%;
+            object-fit: cover;
+            margin: 0; padding: 0;
+        }
+        .our-hotel-swiper .swiper-slide {
+            width: 240px;
+            height: 150px;
+            box-shadow: 2px 2px 8px rgba(0, 0, 0, 0.25);
+        }
+        .our-hotel-swiper .tron-det {margin-top: var(--smDis);
+}
+
+        
+/* ------------------------------------------------------------------ */
+
+        .tab-system {
+            /* background-color: aquamarine; */
+            padding: 0;
+        }
+        .tab-content {
+            /* background-color: var(--subColor2); */
+            width: 100%;
+        }
+        .tab-nav {
+            width: 100%;
+            margin-left: auto; margin-right: auto;
+            padding: 10px;
+            display: flex;
+            gap: var(--mdDis);
+            margin-bottom: var(--mdDis);
+            justify-content: center;
+        }
+        .tab-nav button {
+            background-color: transparent;
+            border: none;
+            padding: var(--smDis) 0;
+            position: relative;
+            color: var(--mainColor1);
+            font-weight: 400;
+            font-size: 28px;
+        }
+        .tab-nav button::after {
+            content: "";
+            height: 3px;
+            background-color: var(--mainColor1);
+            width: 0;
+            transition: width 1s;
+            position: absolute; left: 0; bottom: 0;
+        }
+        .tab-nav button:hover {font-weight: 700;}
+        .tab-nav .tab-cur {
+            color: var(--mainColor1);
+            font-size: 28px;
+            font-weight: 700;
+        }
+        .tab-nav .tab-cur::after {width: 100%;}
+        .tab-content > div:not(.show) {display: none;}
+
+/* ------------------------------------------------------------------ */
+
+       .tab-content > div {
+            gap: var(--mdDis);
+       }
+        .intro {
+            gap: var(--mdDis);
+        }
+        .intro p {
+            font-size: var(--fontSize1);
+            text-align: justify;
+        }
+        .intro .heading {
+            flex-direction: column;
+            gap: var(--smDis);
+        }
+
+        .feature-list, .feature-list .content, .feature-list .content .text {
+            display: flex;
+            flex-direction: column;
+            gap: var(--mdDis);
+        }
+        .feature-list li {
+            display: flex;
+            flex-direction: column;
+            gap: var(--mdDis);
+        }
+        .feature-list h1 {text-align: center;}
+        
+        .feature-list .pic {
+            height: 225px;
+            background-size: cover;
+            background-position: center;
+        }
+        .feature-list .pic1 {
+            background-image: url(Pictures_Linh/overview_pic1.jpg);
+            background-position: bottom;
+        }
+        .feature-list .pic2 {background-image: url(Pictures_Linh/overview_pic2.jpg);}
+        .feature-list .pic3 {background-image: url(Pictures_Linh/overview_pic3.jpg);}
+        .feature-list .text p {
+            font-weight: 400;
+            padding: 0 var(--mdDis);
+            text-align: justify;
+        }
+        .feature-list .text p:nth-child(n+2) {display: none;}
+
+/* ------------------------------------------------------------- */
+        
+        .tab-content .section-heading .story h2 {
+            font-size: var(--fontSize3);
+            font-weight: 400;
+            width: fit-content;
+        }
+        .tab-content .section-heading h1 {
+            font-size: var(--fontSize3);
+            flex-shrink: 0;
+        }
+        .tab-content .section-heading .story {
+            white-space: nowrap;
+            display: flex; flex-direction: column;
+            gap: var(--xsDis);
+            align-items: center;
+        }
+        .tab-content p {text-align: justify;}
+
+        .feature-list .pic2016 {background-image: url(Pictures_Linh/our-hotel_2016.jpg);}
+        .feature-list .pic2018 {background-image: url(Pictures_Linh/our-hotel_2018.jpg);}
+        .feature-list .pic2020 {background-image: url(Pictures_Linh/our-hotel_2020.jpg);}
+        .feature-list .pic2022 {background-image: url(Pictures_Linh/our-hotel_2022.jpg);}
+        .feature-list .pic2023 {background-image: url(Pictures_Linh/our-hotel_2023.jpg);}
+
+        .feature-list .picS1 {background-image: url(Pictures_Linh/our-hotel_picS1.jpg);}
+        .feature-list .picS2 {background-image: url(Pictures_Linh/our-hotel_picS2.jpg);}
+        .feature-list .picS3 {background-image: url(Pictures_Linh/our-hotel_picS3.jpg);}
+        .feature-list .picS4 {background-image: url(Pictures_Linh/our-hotel_picS4.jpg);}
+
+/* ------------------------------------------------------------- */
+
+        .body .line {
+            width: 100%;
+            height: 5px;
+            background-color: var(--subColor2);
+        }
+
+        @media screen and (min-width:768px) {
+            .banner {height: 480px;}
+            .our-hotel-swiper .swiper-slide {width: 360px; height: 225px}
+
+            .feature-list .content {
+                width: fit-content;
+                flex-direction: row;
+                padding: 0 var(--mdDis);
+                align-items: center;
+            }
+            .feature-list .pic {
+                width: 50%;
+                height: 225px;
+                box-shadow: 2px 2px 8px rgba(0, 0, 0, 0.25);
+            }
+            .feature-list .text {
+                padding: 0;
+                width: 50%;
+                align-items: center;
+            }
+            .feature-list .text p {padding: 0;}
+            
+            .feature-list li:nth-child(2n) .content .pic {order: 2;}
+            .feature-list li:nth-child(n) .content .text {align-items: flex-start;}
+            .feature-list li:nth-child(2n) .content .text {align-items: flex-end;}
+        }
+
+        @media screen and (min-width:992px) {
+            .banner {height: 750px;}
+
+            .feature-list .content {
+                gap: var(--mdDis);
+                width: fit-content;
+            }
+            .feature-list .text {width: 100%;}
+            .feature-list .text p:nth-child(n+2) {display: block;}
+        }
+        
+    </style>
+</head>
+<body>
+<!-- Header (start) -->
+<header class="max-container">
+    <!-- Header -->
+    <section class="header-inner padding-xy max-container">
+
+        <!-- Button Menu -->
+        <button class="btn-menu d-md-none" id="btn-menu">
+            <svg>
+                <rect class="top" width="24" height="3" x="2" y="5"></rect>
+                <rect class="mid" width="24" height="3" x="2" y="13"></rect>
+                <rect class="bot" width="24" height="3" x="2" y="21"></rect>
+            </svg>
+        </button>
+
+        <!-- Logo -->
+        <a href="homepage.html" class="link-logo center-flex">
+            <img src="general_pictures/logo_horizontal_2.svg" alt="">
+        </a>
+
+        <!-- Booking -->
+        <button class="btn-std link-shop d-none d-md-flex"><a href="booking_page.html">Book Now</a></button>
+        <button class="btn-std btn-icon-only link-shop d-md-none"><a href=""></a><svg xmlns="http://www.w3.org/2000/svg" height="16" width="14" viewBox="0 0 448 512"><!--!Font Awesome Free 6.5.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2024 Fonticons, Inc.--><path d="M128 0c17.7 0 32 14.3 32 32V64H288V32c0-17.7 14.3-32 32-32s32 14.3 32 32V64h48c26.5 0 48 21.5 48 48v48H0V112C0 85.5 21.5 64 48 64H96V32c0-17.7 14.3-32 32-32zM0 192H448V464c0 26.5-21.5 48-48 48H48c-26.5 0-48-21.5-48-48V192zm64 80v32c0 8.8 7.2 16 16 16h32c8.8 0 16-7.2 16-16V272c0-8.8-7.2-16-16-16H80c-8.8 0-16 7.2-16 16zm128 0v32c0 8.8 7.2 16 16 16h32c8.8 0 16-7.2 16-16V272c0-8.8-7.2-16-16-16H208c-8.8 0-16 7.2-16 16zm144-16c-8.8 0-16 7.2-16 16v32c0 8.8 7.2 16 16 16h32c8.8 0 16-7.2 16-16V272c0-8.8-7.2-16-16-16H336zM64 400v32c0 8.8 7.2 16 16 16h32c8.8 0 16-7.2 16-16V400c0-8.8-7.2-16-16-16H80c-8.8 0-16 7.2-16 16zm144-16c-8.8 0-16 7.2-16 16v32c0 8.8 7.2 16 16 16h32c8.8 0 16-7.2 16-16V400c0-8.8-7.2-16-16-16H208zm112 16v32c0 8.8 7.2 16 16 16h32c8.8 0 16-7.2 16-16V400c0-8.8-7.2-16-16-16H336c-8.8 0-16 7.2-16 16z"/></svg></button>
+        </a>
+    </section>
+    <nav class="the-menu max-container">
+        <div class="swiper">
+            <div class="swiper-wrapper">
+                <a href="homepage.html" class="swiper-slide link-logo-mobile"><img src="general_pictures/logo_horizontal_2.svg" alt=""> </a>
+                <a href="about-us.html" class="swiper-slide">About Us</a>
+                <a href="Villas_and_Rooms.html" class="swiper-slide">Rooms & Villas</a>
+                <a href="restaurants-bars.html" class="swiper-slide">Restaurant & Bars</a>
+                <a href="facilities.html" class="swiper-slide">Facilities</a>
+                <a href="Special_offers.html" class="swiper-slide">Special Offers</a>
+                <a href="gallery.html" class="swiper-slide">Gallery</a>
+                <a href="contact-us1.html" class="swiper-slide">Contact Us</a>
+            </div>
+        </div>
+    </nav>
+</header>
+<!-- Header (end) -->
+
+    <section class="body d-flex-column max-container">
+        <div class="banner">
+            <div class="center-flex"><h1>Our Hotel</h1></div>
+        </div>
+
+        <div class="intro padding-x d-flex-column">
+            <p>
+                ‘Tropique’ is a cozy luxury hotel located in Nha Trang, Vietnam. Our goal is simple: we offer a peaceful, comfy, and serene retreat away from busy city life.
+            </p>
+            <p>
+                Tucked in nature's embrace, our small hotel focuses on giving you a quiet, relaxed space to unwind and recharge. We're all about making sure you feel at home, away from the noise and crowds. Our aim is to provide a calming escape, where you can enjoy comfy rooms, exclusive amenities, and the beauty of nature, along with some special extras.
+            </p>
+        </div>
+        <div class="our-hotel-swiper">
+            <div class="swiper">
+                <div class="swiper-wrapper">
+                    <div class="swiper-slide">
+                        <img src="Pictures_Linh/our-hotel_pic1.jpg" alt="">
+                    </div>
+                    <div class="swiper-slide">
+                        <img src="Pictures_Linh/our-hotel_pic2.jpg" alt="">
+                    </div>
+                    <div class="swiper-slide">
+                        <img src="Pictures_Linh/our-hotel_pic3.jpg" alt="">
+                    </div>
+                    <div class="swiper-slide">
+                        <img src="Pictures_Linh/our-hotel_pic4.jpg" alt="">
+                    </div>
+                    <div class="swiper-slide">
+                        <img src="Pictures_Linh/our-hotel_pic5.jpg" alt="">
+                    </div>
+                </div>
+                <div class="tron-det"></div>
+            </div>
+        </div>
+        <div class="line max-container"></div>
+
+        <div class="padding-xy tab-system">
+            <div class="tab-nav">
+                <button class="tab-cur">Overview</button>
+                <button>Story</button>
+                <button>Strategy</button>
+            </div>
+            <div class="tab-content">
+                <div class="show d-flex-column">
+                    <p class="intro padding-x">
+                        Tropique offers comfort, privacy, and nature's tranquility. We pride ourselves on providing a luxurious stay with personalized services that cater to your every need. Experience the serene beauty of Vietnam's landscapes, offering a peaceful escape from the hustle and bustle of city life. Unwind amidst lush surroundings and engage in a variety of activities, from thrilling water sports to relaxing spa treatments. Whether you seek adventure or simply want to unwind, our hotel promises an unforgettable stay filled with moments of joy and relaxation for all our guests.
+                    </p>
+                    <ul class="max-container reset-list feature-list">
+                        <li>
+                            <h1 class="section-heading padding-x"><span>Comfort & Privacy</span></h1>
+                            <div class="content">
+                                <div class="pic pic1"></div>
+                                <div class="text">
+                                    <p>Experience the comfort of luxury accommodations and exclusive amenities. Our hotel is dedicated to offering high-quality and personalized services, ensuring guests feel pampered and at ease during their stay.</p>
+                                    <p>Nestled within the lush landscapes of Vietnam, Tropique takes pride in offering an exceptional blend of comfort and privacy. Our meticulously designed accommodations provide a haven of tranquility, featuring thoughtfully curated interiors and modern conveniences. From spacious rooms to private villas, each space is crafted to elevate the guest experience. Exclusive amenities, attentive service, and a commitment to privacy make Tropique the perfect choice for those seeking a retreat where every detail contributes to an unparalleled sense of comfort and serenity.</p>
+                                </div>
+                                
+                            </div>
+                        </li>
+                        <li>
+                            <h1 class="section-heading padding-x"><span>Nature's
+                                Peaceful Haven</span></h1>
+                            <div class="content">
+                                <div class="pic pic2"></div>
+                                <div class="text">
+                                    <p>Visiting Tropique allows guests to escape the city bustle and embrace serenity. Our hotel provides a peaceful atmosphere where visitors can enjoy the landscapes and recharge.</p>
+                                    <p>Each corner of Tropique is a testament to serenity, with carefully curated landscapes that provide a visual feast for the eyes and a balm for the soul. Whether it's the lush gardens, the calming water features, or the thoughtfully designed interiors, every element contributes to an atmosphere of relaxation and rejuvenation. Tropique is not just a destination; it's a peaceful retreat where guests can immerse themselves in the beauty of nature and emerge refreshed.</p>
+                                </div>
+                                
+                            </div>
+                        </li>
+                        <li>
+                            <h1 class="section-heading padding-x"><span>Chill &
+                                Relaxing Spots</span></h1>
+                            <div class="content">
+                                <div class="pic pic3"></div>
+                                <div class="text">
+                                    <p>Customers can enjoy a diverse range of activities, from water sports and guided excursions to relaxing spa treatments and poolside leisure. Our cultural events and family-friendly entertainment promise a memorable blend of excitement and tranquility throughout your stay.</p>
+                                    <p>For those seeking repose, our spa treatments offer a haven of relaxation, and the poolside ambiance is an ideal setting for unwinding. Beyond mere accommodation, Tropique is a hub of cultural events and family-friendly entertainment, ensuring that every guest finds a perfect balance of excitement and tranquility. Whether you're an adventure seeker or someone looking for serene moments, Tropique offers a harmonious blend of diverse experiences that elevate your stay to a realm of absolute satisfaction.</p>
+                                </div>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="d-flex-column">
+                    <p class="intro padding-x">
+                        Founded in 2016, Tropique emerged as a tranquil haven nestled in the breathtaking landscapes of Vietnam. Envisioned as a luxurious retreat, the hotel has continuously redefined hospitality, seamlessly blending comfort, personalized service, and a commitment to environmental responsibility. From its serene beginnings, Tropique has expanded, faced global challenges with resilience, and pivoted towards community support, embodying a holistic approach to hospitality and sustainability.
+                    </p>
+                    <ul class="max-container reset-list feature-list">
+                        <li>
+                            <div class="section-heading padding-x">
+                                <div class="story">
+                                    <h2>2016</h2>
+                                    <h1>The Founding</h1>
+                                </div>
+                                
+                            </div>
+                            <div class="content">
+                                <div class="pic pic2016"></div>
+                                <div class="text">
+                                    <p>Tropique was established in 2016, envisioned as a serene retreat within Vietnam's breathtaking landscapes, prioritizing luxury, and tranquility for its guests.</p>
+                                    <p>Since its establishment in 2016, Tropique has evolved into a symbol of refined escape. Growing from its serene beginnings, we've stayed true to our commitment to provide a haven of comfort and personalized service. With each passing year, we continue to redefine hospitality, offering an unforgettable journey for our cherished guests.</p>
+                                </div>
+                                
+                            </div>
+                        </li>
+                        <li>
+                            <div class="section-heading padding-x">
+                                <div class="story">
+                                    <h2>2018</h2>
+                                    <h1>Expansion Begins</h1>
+                                </div>
+                                
+                            </div>
+                            <div class="content">
+                                <div class="pic pic2018"></div>
+                                <div class="text">
+                                    <p>Just two years later, Tropique saw its first expansion, adding more rooms and enhancing its services to accommodate a growing number of visitors seeking solace and rejuvenation.</p>
+                                    <p>This expansion not only increased our capacity but also allowed us to introduce new features, from upgraded amenities to enhanced recreational offerings. As a result, Tropique became a more comprehensive and inviting destination for those seeking a tranquil escape amidst the beauty of Vietnam's landscapes.</p>
+                                </div>
+                                
+                            </div>
+                        </li>
+                        <li>
+                            <div class="section-heading padding-x">
+                                <div class="story">
+                                    <h2>2020</h2>
+                                    <h1>Pandemic Challenge</h1>
+                                </div>
+                                
+                            </div>
+                            <div class="content">
+                                <div class="pic pic2020"></div>
+                                <div class="text">
+                                    <p>In 2020, the hotel faced the global challenge of the COVID-19 pandemic. Despite the setbacks, Tropique remained steadfast in ensuring the safety of its guests and staff while adapting to the changing circumstances.</p>
+                                    <p>During this challenging period, we implemented rigorous health and safety measures, including enhanced sanitation protocols and social distancing practices, to create a secure environment. Tropique also utilized innovative technologies for virtual experiences, ensuring guests could enjoy our hospitality safely from their homes. This resilience marked a pivotal moment in our commitment to community well-being and adapting hospitality for changing times.</p>
+                                </div>
+                                
+                            </div>
+                        </li>
+                        <li>
+                            <div class="section-heading padding-x">
+                                <div class="story">
+                                    <h2>2022</h2>
+                                    <h1>Sustainability Focus</h1>
+                                </div>
+                                
+                            </div>
+                            <div class="content">
+                                <div class="pic pic2022"></div>
+                                <div class="text">
+                                    <p>Continuing its commitment to environmental responsibility, Tropique intensified its efforts toward sustainability, promoting eco-friendly practices and conservation measures despite the challenges posed by the pandemic. These ranged from reduced plastic usage to active involvement in local biodiversity preservation projects, reflecting a resilient commitment to environmental responsibility.</p>
+                                    <p>The hotel also undertook extensive energy-saving measures, incorporating renewable energy sources and adopting innovative technologies to reduce its ecological footprint. Additionally, collaborative partnerships with local communities were forged, fostering a holistic approach to sustainability that extended beyond the hotel's immediate operations.</p>
+                                </div>
+                                
+                            </div>
+                        </li>
+                        <li>
+                            <div class="section-heading padding-x">
+                                <div class="story">
+                                    <h2>2023</h2>
+                                    <h1>Community Resilience</h1>
+                                </div>
+                                
+                            </div>
+                            <div class="content">
+                                <div class="pic pic2023"></div>
+                                <div class="text">
+                                    <p>By 2023, Tropique pivoted to support the local community, offering aid, resources, and opportunities to uplift and contribute positively to the area, reinforcing the spirit of resilience during difficult times.</p>
+                                    <p>The hotel actively engaged in partnerships with local businesses and initiatives that aligned with its vision of community development. Educational programs, vocational training, and skill development workshops were implemented, empowering individuals to thrive in challenging circumstances.</p>
+                                </div>
+                               
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+                <div class="d-flex-column">
+                    <p class="intro padding-x">
+                        We meticulously design our strategy to embody exclusivity, nurture exceptional talent, and honor diverse cultures. Discover how our commitment to luxurious experiences, empowered teams, and regional authenticity shapes our path towards excellence.
+                    </p>
+                    <ul class="max-container reset-list feature-list">
+                        <li>
+                            <h1 class="section-heading padding-x"><span>Our Distinct Vision</span></h1>
+                            <div class="content">
+                                <div class="pic picS1"></div>
+                                <div class="text">
+                                    <p>At Tropique, our commitment to exclusivity and excellence defines our growth strategy. We meticulously curate our locations, ensuring each property aligns seamlessly with our vision of offering unparalleled luxury and tranquility. While focusing on prime coastal and scenic destinations in Vietnam, we also aim to expand our horizons, exploring select locations across diverse continents.</p>
+                                    <p>In line with this vision, Tropique is dedicated to providing an exclusive and tailored experience for each guest. Our strategy involves not just selecting prime destinations but also crafting unique offerings and services that resonate with the distinct preferences of our clientele. By staying true to our commitment to exclusivity, we aim to create an atmosphere where every guest feels not just accommodated, but truly at home amidst the opulence and serenity that define Tropique.</p>
+                                </div>
+                                
+                            </div>
+                        </li>
+                        <li>
+                            <h1 class="section-heading padding-x"><span>Our Valued Team</span></h1>
+                            <div class="content">
+                                <div class="pic picS2"></div>
+                                <div class="text">
+                                    <p>Recognizing that our success hinges on our exceptional teams, we invest significantly in talent acquisition and development. Training and nurturing our staff guarantees that expertise and a passion for hospitality resonate throughout every level, ensuring guests experience the finest service and care.</p>
+                                    <p>Moreover, Tropique invests significantly in ongoing training and development programs for its team. These initiatives foster innovation and adaptability, ensuring a dynamic and enriching guest experience. This commitment not only raises service standards but also enhances the professional and personal growth of every team member.</p>
+                                </div>
+                                
+                            </div>
+                        </li>
+                        <li>
+                            <h1 class="section-heading padding-x"><span>Regional Empowerment</span></h1>
+                            <div class="content">
+                                <div class="pic picS3"></div>
+                                <div class="text">
+                                    <p>Embracing a decentralized approach, we empower our regional teams to deliver exceptional service while celebrating and respecting the unique cultures of each location. This approach allows us to accentuate the distinct charm of each region, country, and property, enriching our guests' experiences.</p>
+                                    <p>In addition to this, Tropique believes in fostering a sense of ownership and pride among its regional teams. By entrusting them with decision-making authority, we not only empower our teams but also ensure that the essence of each location is authentically represented. This decentralized strategy enables us to infuse local flavors seamlessly into our offerings, creating a harmonious blend of global hospitality and regional charm that resonates with our diverse guests.</p>
+                                </div>
+                                
+                            </div>
+                        </li>
+                        <li>
+                            <h1 class="section-heading padding-x"><span>Preserving Our Heritage</span></h1>
+                            <div class="content">
+                                <div class="pic picS4"></div>
+                                <div class="text">
+                                    <p>As a privately-owned entity with steadfast support from our stakeholders, we retain the freedom to uphold our heritage while remaining dedicated to placing our guests at the core of all our endeavors. This commitment ensures that our guests continue to enjoy a stay that reflects the essence of Tropique - a blend of opulence, relaxation, and cultural authenticity.</p>
+                                    <p>Complementing this, Tropique is committed to preserving not just its own heritage but also the cultural richness of the regions it calls home. We actively engage in initiatives that contribute to the preservation of local traditions, heritage sites, and indigenous art forms. By seamlessly integrating the cultural tapestry of our locations into the guest experience, we aim to not only offer luxurious accommodations but also provide a gateway to the rich history and vibrant traditions of each destination.</p>
+                                </div>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        
+    </section>
+
+<!-- Footer (start) --> 
+<footer>
+    <section class="footer-inner padding-xy max-container">
+        <div class="shop-name link-logo">
+            <a href="homepage.html"> <img src="general_pictures/logo_horizontal_3.svg" alt=""></a>   
+        </div>
+        <div class="footer-contact">
+            <p>Sign up for offers</p>
+            <div class="footer-email">
+                <input class="fill-email" type="text" placeholder="email@example.com">   
+                <button class="btn-primary btn-send" type=""><svg xmlns="http://www.w3.org/2000/svg" height="16" width="16" viewBox="0 0 512 512"><!--!Font Awesome Free 6.5.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2024 Fonticons, Inc.--><path d="M502.6 278.6c12.5-12.5 12.5-32.8 0-45.3l-128-128c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3L402.7 224 32 224c-17.7 0-32 14.3-32 32s14.3 32 32 32l370.7 0-73.4 73.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0l128-128z"/></svg></button>
+            </div>
+            <div class="social-links">
+                <a href="" class="btn-primary social-links-icons"><svg xmlns="http://www.w3.org/2000/svg" height="16" width="10" viewBox="0 0 320 512"><!--!Font Awesome Free 6.5.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2024 Fonticons, Inc.--><path d="M80 299.3V512H196V299.3h86.5l18-97.8H196V166.9c0-51.7 20.3-71.5 72.7-71.5c16.3 0 29.4 .4 37 1.2V7.9C291.4 4 256.4 0 236.2 0C129.3 0 80 50.5 80 159.4v42.1H14v97.8H80z"/></svg></a>
+                <a href="" class="btn-primary social-links-icons"><svg xmlns="http://www.w3.org/2000/svg" height="16" width="14" viewBox="0 0 448 512"><!--!Font Awesome Free 6.5.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2024 Fonticons, Inc.--><path d="M224.1 141c-63.6 0-114.9 51.3-114.9 114.9s51.3 114.9 114.9 114.9S339 319.5 339 255.9 287.7 141 224.1 141zm0 189.6c-41.1 0-74.7-33.5-74.7-74.7s33.5-74.7 74.7-74.7 74.7 33.5 74.7 74.7-33.6 74.7-74.7 74.7zm146.4-194.3c0 14.9-12 26.8-26.8 26.8-14.9 0-26.8-12-26.8-26.8s12-26.8 26.8-26.8 26.8 12 26.8 26.8zm76.1 27.2c-1.7-35.9-9.9-67.7-36.2-93.9-26.2-26.2-58-34.4-93.9-36.2-37-2.1-147.9-2.1-184.9 0-35.8 1.7-67.6 9.9-93.9 36.1s-34.4 58-36.2 93.9c-2.1 37-2.1 147.9 0 184.9 1.7 35.9 9.9 67.7 36.2 93.9s58 34.4 93.9 36.2c37 2.1 147.9 2.1 184.9 0 35.9-1.7 67.7-9.9 93.9-36.2 26.2-26.2 34.4-58 36.2-93.9 2.1-37 2.1-147.8 0-184.8zM398.8 388c-7.8 19.6-22.9 34.7-42.6 42.6-29.5 11.7-99.5 9-132.1 9s-102.7 2.6-132.1-9c-19.6-7.8-34.7-22.9-42.6-42.6-11.7-29.5-9-99.5-9-132.1s-2.6-102.7 9-132.1c7.8-19.6 22.9-34.7 42.6-42.6 29.5-11.7 99.5-9 132.1-9s102.7-2.6 132.1 9c19.6 7.8 34.7 22.9 42.6 42.6 11.7 29.5 9 99.5 9 132.1s2.7 102.7-9 132.1z"/></svg></a>
+                <a href="" class="btn-primary social-links-icons"><svg xmlns="http://www.w3.org/2000/svg" height="16" width="16" viewBox="0 0 512 512"><!--!Font Awesome Free 6.5.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2024 Fonticons, Inc.--><path d="M389.2 48h70.6L305.6 224.2 487 464H345L233.7 318.6 106.5 464H35.8L200.7 275.5 26.8 48H172.4L272.9 180.9 389.2 48zM364.4 421.8h39.1L151.1 88h-42L364.4 421.8z"/></svg></a>
+            </div>
+        </div>
+        <div class="footer-menu">
+            <ul class="reset-list">
+                <li><a href="about-us.html">About Us</a></li>
+                <li><a href="Villas_and_Rooms.html">Rooms & Villas
+                </a></li>
+                <li><a href="restaurants-bars.html">Restaurant & Bars
+                </a></li>
+                <li><a href="facilities.html">Facilities</a></li>
+                <li><a href="Special_offers.html">Special Offers</a></li>
+                <li><a href="gallery.html">Gallery
+                </a></li>
+                <li><a href="contact-us1.html">Contact Us</a></li>
+                <li><a href="terms&conditions.html">Terms & Conditions</a></li>
+                
+            </ul>
+        </div>
+        <div class="shop-info">
+            <p>No 22, Street ABCD, Nha Trang, Vietnam
+            </p>
+            <p>Tel: <a href="tel:012345678">(+84) 012 345 678</a></p>
+            
+        </div>
+    </section>
+</footer>
+<!-- Footer (end) -->
+
+    <script>
+        const menuNgang = new Swiper (`.the-menu .swiper`, {
+            slidesPerView: 'auto', spaceBetween: 20
+        })
+        document.getElementById(`btn-menu`).addEventListener(`click`, (e) => {
+            document.body.classList.toggle(`show-menu`);
+        })
+        
+// -----------------------------------------------------------------------
+
+        const restaurantSwiper = new Swiper(`.our-hotel-swiper .swiper`, {
+                loop: true,
+                spaceBetween: 20,
+                centeredSlides: true,
+                slidesPerView: 2,
+                breakpoints: {
+                    768: {
+                        slidesPerView: 2,
+                    },
+                    992: {
+                        slidesPerView: 3,
+                    },
+                },
+                pagination: { el: `.our-hotel-swiper .tron-det` }
+            });
+        
+// -----------------------------------------------------------------------
+        let arTabs = Array.from(document.querySelectorAll(`.tab-nav button`));
+            let boND = document.querySelectorAll (`.tab-content > div`);
+            arTabs.forEach(a=>a.addEventListener(`click`,(e)=>{
+                arTabs.forEach(r=>r.classList.remove(`tab-cur`));
+                e.currentTarget.classList.add(`tab-cur`);
+                let n = arTabs.indexOf(e.currentTarget);
+                boND.forEach(b=>b.classList.remove(`show`));
+                boND[n].classList.add(`show`)
+            }))
+        
+    </script>
+</body>
+</html>

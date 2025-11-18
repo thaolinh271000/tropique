@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link
+    rel="stylesheet"
+    href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"
+    />
+
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+    <link rel="stylesheet" href="root.css">
+</head>
+<body>
+    
+    <Header class="max-container">
+    <section class="section header-inner padding-xy max-container">
+
+        <!-- Button Menu -->
+        <button class="btn-menu d-md-none" id="btn-menu">
+            <svg>
+                <rect class="top" width="24" height="3" x="2" y="5"></rect>
+                <rect class="mid" width="24" height="3" x="2" y="13"></rect>
+                <rect class="bot" width="24" height="3" x="2" y="21"></rect>
+            </svg>
+        </button>
+
+        <!-- Logo -->
+        <a href="" class="link-logo center-flex">
+            <img src="general_pictures/logo_horizontal_2.svg" alt="">
+        </a>
+
+        <!-- Booking -->
+        <button class="btn-std link-shop d-none d-md-flex">Book Now</button>
+        <button class="btn-std btn-icon-only link-shop d-md-none"><a href=""></a><svg xmlns="http://www.w3.org/2000/svg" height="16" width="14" viewBox="0 0 448 512"><!--!Font Awesome Free 6.5.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2024 Fonticons, Inc.--><path d="M128 0c17.7 0 32 14.3 32 32V64H288V32c0-17.7 14.3-32 32-32s32 14.3 32 32V64h48c26.5 0 48 21.5 48 48v48H0V112C0 85.5 21.5 64 48 64H96V32c0-17.7 14.3-32 32-32zM0 192H448V464c0 26.5-21.5 48-48 48H48c-26.5 0-48-21.5-48-48V192zm64 80v32c0 8.8 7.2 16 16 16h32c8.8 0 16-7.2 16-16V272c0-8.8-7.2-16-16-16H80c-8.8 0-16 7.2-16 16zm128 0v32c0 8.8 7.2 16 16 16h32c8.8 0 16-7.2 16-16V272c0-8.8-7.2-16-16-16H208c-8.8 0-16 7.2-16 16zm144-16c-8.8 0-16 7.2-16 16v32c0 8.8 7.2 16 16 16h32c8.8 0 16-7.2 16-16V272c0-8.8-7.2-16-16-16H336zM64 400v32c0 8.8 7.2 16 16 16h32c8.8 0 16-7.2 16-16V400c0-8.8-7.2-16-16-16H80c-8.8 0-16 7.2-16 16zm144-16c-8.8 0-16 7.2-16 16v32c0 8.8 7.2 16 16 16h32c8.8 0 16-7.2 16-16V400c0-8.8-7.2-16-16-16H208zm112 16v32c0 8.8 7.2 16 16 16h32c8.8 0 16-7.2 16-16V400c0-8.8-7.2-16-16-16H336c-8.8 0-16 7.2-16 16z"/></svg></button>
+        </a>
+    </section>
+    <nav class="the-menu padding-xy max-container">
+        <div class="swiper">
+            <div class="swiper-wrapper">
+                <a href="" class="swiper-slide link-logo-mobile"><img src="general_pictures/logo_horizontal_2.svg" alt=""> </a>
+                <a href="" class="swiper-slide">About Us</a>
+                <a href="" class="swiper-slide">Rooms & Villas</a>
+                <a href="" class="swiper-slide">Restaurant & Bars</a>
+                <a href="" class="swiper-slide">Facilities</a>
+                <a href="" class="swiper-slide">Special Offers</a>
+                <a href="" class="swiper-slide">Gallery</a>
+                <a href="" class="swiper-slide">Contact Us</a>
+            </div>
+        </div>
+    </nav>
+</header>
+
+<script>
+    const menuNgang = new Swiper (`.the-menu .swiper`, {
+        slidesPerView: 'auto', spaceBetween: 20
+    })
+    document.getElementById(`btn-menu`).addEventListener(`click`, (e) => {
+        document.body.classList.toggle(`show-menu`);
+    })
+</script>
+</body>
+</html>

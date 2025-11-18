@@ -1,0 +1,423 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link
+    rel="stylesheet"
+    href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"
+    />
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+    <link href="
+    https://cdn.jsdelivr.net/npm/vanilla-calendar-pro@2.9.2/build/vanilla-calendar.min.css
+" rel="stylesheet">
+
+<script src="
+https://cdn.jsdelivr.net/npm/vanilla-calendar-pro@2.9.2/build/vanilla-calendar.min.js
+"></script> 
+
+    <link rel="stylesheet" href="root.css">
+    <style>
+
+        [data-calendar-theme=light] .vanilla-calendar-day__btn_selected, 
+        [data-calendar-theme=light] .vanilla-calendar-day__btn_selected:hover {
+            background-color: var(--subColor4); 
+            
+        }
+        [data-calendar-theme=light] .vanilla-calendar-day__btn_today, 
+        [data-calendar-theme=light] .vanilla-calendar-day__btn_today:hover {
+            color: var(--subColor4)
+        }
+        [data-calendar-theme=light] .vanilla-calendar-day__btn_today.vanilla-calendar-day__btn_selected{
+            color:#FFF;
+        }
+
+        [data-calendar-theme=light] .vanilla-calendar-day__btn_weekend.vanilla-calendar-day__btn_selected, [data-calendar-theme=light] .vanilla-calendar-day__btn_holiday.vanilla-calendar-day__btn_selected, [data-calendar-theme=light] .vanilla-calendar-day__btn_weekend.vanilla-calendar-day__btn_selected:hover, [data-calendar-theme=light] .vanilla-calendar-day__btn_holiday.vanilla-calendar-day__btn_selected:hover
+        {
+            background-color: var(--subColor5);
+        }
+        [data-calendar-theme=light] .vanilla-calendar-week__day_weekend ,
+        [data-calendar-theme=light] .vanilla-calendar-day__btn_weekend, [data-calendar-theme=light] .vanilla-calendar-day__btn_holiday {
+            color: var(--subColor5)
+        }
+
+        /* Style the tab */
+        .tab {
+        overflow:visible;
+        border: solid var(--subColor2);
+        border-top: 0; border-right: 0; border-left: 0;
+        background-color: white;
+        display: flex;
+        justify-content: center;
+        gap: var(--xlDis);
+        }
+
+        /* Style the buttons that are used to open the tab content */
+        .tab button {
+            color:var(--mainColor2);
+            background-color: white;
+            float: left;
+            border: none;
+            outline: none;
+            cursor: pointer;
+            padding: 20px 0;
+            transition: 0.3s;
+            position: relative;
+        }
+        .tab button::after {
+            content:""; width: 0; height: 1px; background-color: var(--mainColor1);
+            position: absolute; left: 50%; transform: translate(-50%,0);
+            bottom:-1px; transition: width .3s;
+        }
+        .tab button.active::after {width: 100%;}
+        /* Change background color of buttons on hover */
+        .tab button:hover {
+            background-color: none;
+           
+        }
+
+        /* Create an active/current tablink class */
+        .tab button.active {
+            background-color: white;
+            /* border: solid 0 0 1px 0; */
+            color: var(--mainColor1);
+            position: relative;
+        }
+
+        
+
+        /* Style the tab content */
+        .tabcontent {
+        display: none;
+        padding: 6px 12px;
+        border: none;
+        border-top: none;
+        }
+        .tabcontent-active {display: block;}
+        /* Select Room */
+        .svg-template svg {fill: var(--mainColor1);}
+        .room-heading h1 {
+        color: var(--mainColor1);
+        }
+        
+        .drop-shadow {box-shadow: 2px 2px 8px rgba(0, 0, 0, 0.25);
+            background-color: #FFF;
+        }
+        .no-border {border:none;}
+        .center-hor {width:fit-content; 
+            display: flex; margin-left: auto !important; 
+            margin-right: auto !important; color: var(--mainColor1);
+        }
+        .flex-btw {display: flex; justify-content: space-between; align-items: center;}
+        .room-item:not(:last-child) {margin-bottom: var(--mdDis);}
+        .qty {display: grid; grid-template-columns: 30px 30px 30px;
+            align-items: center;
+        }
+        .qty > * {display: block; text-align: center; border:none;
+            background-color: transparent;
+        }
+        .room-item svg {width: 20px; height: 20px; fill: var(--mainColor1);}
+        .room-item .remove-item {background-color: transparent;}
+
+        /* Personal Request */
+        d-flex-column {display: flex; flex-direction: column;}
+        .body {gap: var(--mdDis);}
+        p.intro {
+            font-size: var(--fontSize1);
+            width: 70%;
+            text-align: center;
+            margin-left: auto; margin-right: auto;
+        }
+       
+        .contact-group .fill-box {
+            display: flex;
+            flex-direction: column;
+            gap: var(--mdDis);
+        }
+        .contact-group .fill-box button {
+            width: fit-content;
+            margin-left: auto; margin-right: auto;
+        }
+
+        .fill-box > *:nth-child(3) {display: none;}
+        .fill-box p {
+            width: fit-content;
+            font-weight: 700;
+            color: var(--mainColor1);
+            font-size: var(--fontSize2);
+        }
+        .fill-box input, .fill-box textarea {
+            width: 100%; height: 50px;
+            border: 1px solid var(--mainColor1);
+            border-radius: 10px;
+
+            font-size: var(--fontSize1);
+            font-weight: 400;
+        }
+        .fill-box textarea {height: 200px;}
+        .fill-box ul {
+            width: 100%;
+            gap: var(--mdDis);
+            }
+        .fill-box li, .fill-box .personal-request {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: var(--xsDis);
+        }
+        .fill-box {
+            height: fit-content;
+            margin: 0 var(--mdDis);
+        }
+        /* .btn-inf {
+            display: flex;
+            justify-content: center; gap: 175px;
+        } */
+        .btn-inf {
+        position: fixed;
+        bottom: 0;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 100%;
+        display: flex;
+        justify-content:space-around;
+        padding: 20px;
+        background-color: white;
+        
+        z-index: 1;
+        
+        /* Ensure it appears above other content */
+    }
+    .btn-inf .btn-send {background-color: var(--mainColor1); color: white; border: none;}
+   
+
+    /* == calendar =============*/
+    #calendar * {font-family: var(--font2); font-size: var(--fontSize2);
+        line-height: 2.5rem !important;
+        row-gap: 2.5rem;
+    }
+   
+    .vanilla-calendar_multiple {width:100%;}        
+    #calendar .vanilla-calendar-column:last-child, 
+    #calendar .vanilla-calendar-arrow_next {display: none;}
+    #calendar .vanilla-calendar-grid {display: block;}
+
+    /* =====calendar === */
+
+        @media screen and (min-width: 768px) {
+            .room-layout {display: grid; grid-template-columns: 1fr 1fr; gap: var(--mdDis); align-items: center;}
+            .room-layout > button {width: 100%; height: 100%;
+                display: flex; justify-content: center; align-items: center;
+            }
+            .room-item:not(:last-child) {margin-bottom: 0;}
+            .fill-box textarea {height: 100%;}
+            .contact-group {
+                display: grid;
+                grid-template-columns: 1fr 1fr;
+                padding: 0 var(--mdDis);
+            }
+            .contact-group .fill-box {
+                display: grid;
+                grid-template-columns: 1fr 1fr;
+                margin: 0;
+                grid-column: span 2;
+            }
+            
+            /*calendar*/
+            #calendar .vanilla-calendar-column:last-child   {display: flex;}
+            #calendar .vanilla-calendar-arrow_next {display: block;}    
+            #calendar .vanilla-calendar-grid {display: grid;
+                grid-template-columns: 1fr 1fr;
+            }
+             /*calendar*/
+
+        } /*het 768*/
+        
+        @media screen and (min-width: 992px) {
+            .room-layout {grid-template-columns: 1fr 1fr 1fr;}
+            .room-layout button {cursor: pointer;}
+                 
+        }/*het 992*/
+    </style>
+</head>
+<body>
+<!-- Tab links -->
+<div class="tab">
+    <button class="tablinks active" onclick="openTab(event, 'SelectDates')">Select Dates</button>
+    <button class="tablinks" onclick="openTab(event, 'SelectRoom')">Select Room</button>
+    <button class="tablinks" onclick="openTab(event, 'YourDetails')">Your Details</button>
+  </div>
+
+<!-- Select Dates -->
+<div id="SelectDates" class="tabcontent max-container tabcontent-active">
+    <div id="calendar" class="max-container"></div>   
+</div>
+<!-- Select Room -->
+<div id="SelectRoom" class="tabcontent max-container">
+    <div class="svg-template" hidden>
+        <svg>
+            <defs>
+              <symbol id="trash" viewBox="0 0 448 512">
+                <path d="M135.2 17.7L128 32H32C14.3 32 0 46.3 0 64S14.3 96 32 96H416c17.7 0 32-14.3 32-32s-14.3-32-32-32H320l-7.2-14.3C307.4 6.8 296.3 0 284.2 0H163.8c-12.1 0-23.2 6.8-28.6 17.7zM416 128H32L53.2 467c1.6 25.3 22.6 45 47.9 45H346.9c25.3 0 46.3-19.7 47.9-45L416 128z"/>
+              </symbol>
+              <symbol id="plus" viewBox="0 0 448 512">
+                <path d="M256 80c0-17.7-14.3-32-32-32s-32 14.3-32 32V224H48c-17.7 0-32 14.3-32 32s14.3 32 32 32H192V432c0 17.7 14.3 32 32 32s32-14.3 32-32V288H400c17.7 0 32-14.3 32-32s-14.3-32-32-32H256V80z"/>
+              </symbol>
+              <symbol id="minus" viewBox="0 0 448 512">
+                <path d="M432 256c0 17.7-14.3 32-32 32L48 288c-17.7 0-32-14.3-32-32s14.3-32 32-32l352 0c17.7 0 32 14.3 32 32z"/>
+              </symbol>
+            </defs>
+          </svg>
+    </div>
+    <div id="the-template-div" hidden>
+        <div class="room-heading flex-btw no-border">
+            <h1>ROOM <span class="room-number">1</span></h1>
+            <button class="remove-item no-border">
+                <svg><use xlink:href="#trash"></use></svg>
+            </button>
+        </div>
+        <div class="qty-detail flex-btw">
+            <p>Adults<br>(+13 years)</p>
+            <div class="qty">
+                <button class="decrease"><svg><use xlink:href="#minus"></use></svg></button>
+                <input type="number" value="1">
+                <button class="increase"><svg><use xlink:href="#plus"></use></svg></button>
+            </div>
+        </div>
+        <div class="qty-detail flex-btw">
+            <p>Children<br>(+13 years)</p>
+            <div class="qty">
+                <button class="decrease"><svg><use xlink:href="#minus"></use></svg></button>
+                <input type="number" value="0">
+                <button class="increase"><svg><use xlink:href="#plus"></use></svg></button>
+            </div>
+        </div>
+    </div>
+    <!--  -->
+    <section class="padding-xy room-layout" id="room-list">
+        <!-- will be generated -->
+        <button id="btn-add-room" class="center-hor padding-xy btn-big no-border drop-shadow"><strong>+ ADD ROOM</strong></button>
+    </section>
+</div>
+<!-- Personal Request -->
+<div id="YourDetails" class="tabcontent max-container">
+    <div id="personal-request-content" class="tab-content">
+        <section class="body d-flex-column max-container">
+            <div class="contact-group">
+                <form action="" class="fill-box">
+                    <ul class="max-container reset-list d-flex-column">
+                        <li>
+                            <p>Guest's Name</p>
+                            <input type="text" placeholder="      Mike Jordan">
+                        </li>
+                        <li>
+                            <p>Phone Number</p>
+                            <input type="text" placeholder="      +(84) 012 345 678">
+                        </li>
+                        <li>
+                            <p>E-mail</p>
+                            <input type="text" placeholder="      email@example.com">
+                        </li>
+                        
+                    </ul>
+                    <div class="personal-request">
+                        <p>Personal Request</p>
+                        <textarea name="" id="" cols="10" rows="10"></textarea>
+                    </div>
+                </form>
+            </div>
+        </section>
+    </div>
+</div>
+<div class="btn-inf center-flex padding-xy max-container">
+    <button type="button" class="btn-cancel btn-std" onclick="cancelForm()">Cancel</button>
+    <button type="submit" class="btn-std btn-send">Book Now</button>
+</div>
+
+    <script>
+        // TABS
+        function openTab(evt, tabName) {
+            // Declare all variables
+            var i, tabcontent, tablinks;
+
+            // Get all elements with class="tabcontent" and hide them
+            tabcontent = document.getElementsByClassName("tabcontent");
+            for (i = 0; i < tabcontent.length; i++) {
+                tabcontent[i].style.display = "none";
+            }
+
+            // Get all elements with class="tablinks" and remove the class "active"
+           
+            tabLinks = document.querySelectorAll(`.tab button`)
+            tabLinks.forEach(t => t.classList.remove(`active`))
+      
+
+        // Show the current tab, and add an "active" class to the button that opened the tab
+            document.getElementById(tabName).style.display = "block";
+            evt.currentTarget.classList.add(`active`);
+        }
+
+
+        // FILL FORM
+        function cancelForm() {
+          // Additional cancellation logic can be added here
+          // For now, just preventing the default form submission
+          document.getElementById("myForm").reset();
+        }
+        // SELECT ROOM
+        //update the numbers
+        const fID = document.getElementById.bind(document);
+        const qAll = document.querySelectorAll.bind(document);
+        let theSection = fID(`room-list`);
+
+        const updateRoomNumbers = ()=>{
+            let rItems = qAll(`.room-item`);
+            for(let i=1;i<=rItems.length;i++) {
+                rItems[i-1].querySelector(`h1 span`).innerHTML = i;
+            }
+        }
+        const removeRoomItem = (e) => {
+            let theItem = e.currentTarget.closest(`.room-item`);
+            theItem.remove();
+            updateRoomNumbers();  
+        }
+        const qtyHandle = (e) =>{
+           let theInput = e.currentTarget.closest(`.qty`).querySelector(`input`);
+           let n = parseInt(theInput.value);
+           n +=  e.currentTarget.classList.contains(`increase`) ? 1 : -1; 
+           if (n<0) n=0;
+           theInput.value = n;
+        }
+        
+        fID(`btn-add-room`).addEventListener(`click`,()=>{
+            let oneDiv = document.createElement("div");
+            let s= fID(`the-template-div`).innerHTML;
+            oneDiv.className= "room-item  drop-shadow padding-xy";
+            oneDiv.innerHTML = s;
+
+            let btnRemove = oneDiv.querySelector(`.remove-item`);
+            btnRemove.addEventListener(`click`,removeRoomItem);
+            let  qtyBtns = oneDiv.querySelectorAll(`.qty button`);
+            qtyBtns.forEach(q =>q.addEventListener(`click`,qtyHandle))
+
+            theSection.prepend(oneDiv);
+            updateRoomNumbers();
+        })
+        //calendar 
+        const calendar = new VanillaCalendar('#calendar',  {
+            type: 'multiple',
+            months: 2,
+            jumpMonths: 1,
+            settings: {
+                selection: {
+                day: 'multiple',
+                },
+            },
+        });
+    calendar.init();
+
+
+    </script>
+</body>
+</html>

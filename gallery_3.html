@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link
+    rel="stylesheet"
+    href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"
+    />
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+    <link rel="stylesheet" href="root.css">
+    <style>
+        h1, h2, p {padding: 0;margin: 0;}
+        body {min-width: 360px;}
+        .header-inner {
+            background-color: white;
+            align-items: center;
+        }
+        .btn-menu svg {fill: var(--mainColor1);}
+        button {font-weight: 700;}
+        
+        .d-flex-column {display: flex; flex-direction: column;}
+        .body {gap: var(--mdDis);}
+
+        .banner {
+            height: 400px;
+            background-image: url(Pictures/banner_gallery.JPG);
+            background-size: cover; background-position: center;
+        }
+        .banner h1 {
+            color: white;
+            font-size: var(--fontSize4);
+        } 
+        .banner > div {
+            background-color: rgba(0, 0, 0, 0.3);
+            height: 100%;
+        }
+
+        p.intro {
+            font-size: var(--fontSize1);
+            width: 70%;
+            text-align: center;
+            margin-left: auto; margin-right: auto;
+        }
+        .product-list {
+            display: grid;
+            
+            gap: 20px;
+            
+        }
+        .reset-list .social-links {color: #000;}
+        .product-list li {
+            min-height: 70px;
+            margin-bottom: 10px; padding: 10px;
+        }
+        .product-list li:last-child {margin-bottom: 10px;}
+        @media screen and (min-width:768px) {
+            .product-list {display: grid; gap: var(--mdDis); grid-template-columns: 1fr 1fr;}
+            .product-list li:not(:last-child) {margin-bottom: 0;}
+            .banner {
+            height: 480px;
+        }
+        }
+        @media screen and (min-width:992px) {
+            .product-list {grid-template-columns: 1fr 1fr 1fr;}
+            .banner {
+            height: 750px;
+        }}
+
+    </style>
+</head>
+<body>
+    <!-- Header (start) -->
+    <header class="max-container">
+        <!-- Header -->
+        <section class="header-inner padding-xy max-container">
+    
+            <!-- Button Menu -->
+            <button class="btn-menu d-md-none" id="btn-menu">
+                <svg>
+                    <rect class="top" width="24" height="3" x="2" y="5"></rect>
+                    <rect class="mid" width="24" height="3" x="2" y="13"></rect>
+                    <rect class="bot" width="24" height="3" x="2" y="21"></rect>
+                </svg>
+            </button>
+    
+            <!-- Logo -->
+            <a href="index.html" class="link-logo center-flex">
+                <img src="general_pictures/logo_horizontal_2.svg" alt="">
+            </a>
+    
+            <!-- Booking -->
+            <button class="btn-std link-shop d-none d-md-flex"><a href="booking_page.html">Book Now</a></button>
+            <button class="btn-std btn-icon-only link-shop d-md-none"><a href=""></a><svg xmlns="http://www.w3.org/2000/svg" height="16" width="14" viewBox="0 0 448 512"><!--!Font Awesome Free 6.5.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2024 Fonticons, Inc.--><path d="M128 0c17.7 0 32 14.3 32 32V64H288V32c0-17.7 14.3-32 32-32s32 14.3 32 32V64h48c26.5 0 48 21.5 48 48v48H0V112C0 85.5 21.5 64 48 64H96V32c0-17.7 14.3-32 32-32zM0 192H448V464c0 26.5-21.5 48-48 48H48c-26.5 0-48-21.5-48-48V192zm64 80v32c0 8.8 7.2 16 16 16h32c8.8 0 16-7.2 16-16V272c0-8.8-7.2-16-16-16H80c-8.8 0-16 7.2-16 16zm128 0v32c0 8.8 7.2 16 16 16h32c8.8 0 16-7.2 16-16V272c0-8.8-7.2-16-16-16H208c-8.8 0-16 7.2-16 16zm144-16c-8.8 0-16 7.2-16 16v32c0 8.8 7.2 16 16 16h32c8.8 0 16-7.2 16-16V272c0-8.8-7.2-16-16-16H336zM64 400v32c0 8.8 7.2 16 16 16h32c8.8 0 16-7.2 16-16V400c0-8.8-7.2-16-16-16H80c-8.8 0-16 7.2-16 16zm144-16c-8.8 0-16 7.2-16 16v32c0 8.8 7.2 16 16 16h32c8.8 0 16-7.2 16-16V400c0-8.8-7.2-16-16-16H208zm112 16v32c0 8.8 7.2 16 16 16h32c8.8 0 16-7.2 16-16V400c0-8.8-7.2-16-16-16H336c-8.8 0-16 7.2-16 16z"/></svg></button>
+            </a>
+        </section>
+        <nav class="the-menu max-container">
+            <div class="swiper">
+                <div class="swiper-wrapper">
+                    <a href="index.html" class="swiper-slide link-logo-mobile"><img src="general_pictures/logo_horizontal_2.svg" alt=""> </a>
+                    <a href="about-us.html" class="swiper-slide">About Us</a>
+                    <a href="Villas_and_Rooms.html" class="swiper-slide">Rooms & Villas</a>
+                    <a href="restaurants-bars.html" class="swiper-slide">Restaurant & Bars</a>
+                    <a href="facilities.html" class="swiper-slide">Facilities</a>
+                    <a href="Special_offers.html" class="swiper-slide">Special Offers</a>
+                    <a href="gallery.html" class="swiper-slide">Gallery</a>
+                    <a href="contact-us1.html" class="swiper-slide">Contact Us</a>
+                </div>
+            </div>
+        </nav>
+    </header>
+<!-- Header (end) -->
+    <section class="body d-flex-column max-container">
+    <div class="banner">
+        <div class="center-flex"><h1>Gallery</h1></div>
+    </div>  
+    <p class="intro padding-x">
+        “Witness the perfect blend of nature and luxury in our hotel's gallery, a visual journey that will leave you eager to create your own memories in this idyllic setting.”
+    </p>
+    <section class="products padding-x max-container">
+        <ul class="reset-list product-list">
+            <li>
+                <a href="">
+                    <img src="Pictures/pic21.jpg" alt="">
+                </a>
+            </li>
+
+            <li>
+                <a href="">
+                    <img src="Pictures/pic22.jpg" alt=""> </a>
+            </li>
+
+            <li>
+                <a href="">
+                    <img src="Pictures/pic23.jpg" alt="">
+                </a>
+            </li>
+            <li>
+                <a href="">
+                    <img src="Pictures/pic24.jpg" alt="">
+                </a>
+            </li> 
+            <li>
+                <a href="">
+                    <img src="Pictures/pic25.jpg" alt="">
+                </a>
+            </li>
+            <li>
+                <a href="">
+                    <img src="Pictures/pic26.jpg" alt="">
+                </a>
+            </li>
+            <li>
+                <a href="">
+                    <img src="Pictures/pic27.jpg" alt="">
+                </a>
+            </li>
+            <li>
+                <a href="">
+                    <img src="Pictures/pic28.jpg" alt="">
+                </a>
+            </li>
+            <li>
+                <a href="">
+                    <img src="Pictures/pic29.jpg" alt="">
+                </a>
+            </li>
+        </ul>
+        </section>
+        <!-- Pagination -->
+    <section class="padding-x">
+        <ul class="reset-list shop-pagination center-flex">
+            <li><a href="gallery_2.html" class="btn-std btn-icon-only">
+                <svg xmlns="http://www.w3.org/2000/svg" height="16" width="14" viewBox="0 0 448 512"><!--!Font Awesome Free 6.5.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2024 Fonticons, Inc.--><path d="M9.4 233.4c-12.5 12.5-12.5 32.8 0 45.3l160 160c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L109.2 288 416 288c17.7 0 32-14.3 32-32s-14.3-32-32-32l-306.7 0L214.6 118.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0l-160 160z"/></svg></a>
+            </li>
+
+            <!-- Mobile Pagination -->
+            <li class="d-md-none">1/10</li>
+            
+            <!-- Tablet & desktop pagination -->
+            <li class="d-none d-md-flex"> <a href="gallery.html" class="cur-page">1</a></li>
+            <li class="d-none d-md-flex"> <a href="gallery_2.html" class="cur-page">2</a></li>
+            <li class="d-none d-md-flex"> <a href="gallery_3.html" class="cur-page">3</a></li>
+            <li class="d-none d-md-flex"> <a href="gallery_4.html" class="cur-page">4</a></li>
+            <li class="d-none d-md-flex"> <a href="" class="cur-page">5</a></li>
+            <li class="d-none d-md-flex"> <a href="" class="cur-page">6</a></li>
+
+            <li><a href="gallery_4.html" class="btn-std btn-icon-only">
+                <svg xmlns="http://www.w3.org/2000/svg" height="16" width="14" viewBox="0 0 448 512"><!--!Font Awesome Free 6.5.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2024 Fonticons, Inc.--><path d="M438.6 278.6c12.5-12.5 12.5-32.8 0-45.3l-160-160c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3L338.8 224 32 224c-17.7 0-32 14.3-32 32s14.3 32 32 32l306.7 0L233.4 393.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0l160-160z"/></svg></svg>
+            </a></li>
+        </ul>
+    </section>
+    <footer>
+        <section class="footer-inner padding-xy max-container">
+            <div class="shop-name link-logo">
+                <a href="index.html"> <img src="general_pictures/logo_horizontal_3.svg" alt=""></a>   
+            </div>
+            <div class="footer-contact">
+                <p>Sign up for offers</p>
+                <div class="footer-email">
+                    <input class="fill-email" type="text" placeholder="email@example.com">   
+                    <button class="btn-primary btn-send" type=""><svg xmlns="http://www.w3.org/2000/svg" height="16" width="16" viewBox="0 0 512 512"><!--!Font Awesome Free 6.5.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2024 Fonticons, Inc.--><path d="M502.6 278.6c12.5-12.5 12.5-32.8 0-45.3l-128-128c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3L402.7 224 32 224c-17.7 0-32 14.3-32 32s14.3 32 32 32l370.7 0-73.4 73.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0l128-128z"/></svg></button>
+                </div>
+                <div class="social-links">
+                    <a href="" class="btn-primary social-links-icons"><svg xmlns="http://www.w3.org/2000/svg" height="16" width="10" viewBox="0 0 320 512"><!--!Font Awesome Free 6.5.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2024 Fonticons, Inc.--><path d="M80 299.3V512H196V299.3h86.5l18-97.8H196V166.9c0-51.7 20.3-71.5 72.7-71.5c16.3 0 29.4 .4 37 1.2V7.9C291.4 4 256.4 0 236.2 0C129.3 0 80 50.5 80 159.4v42.1H14v97.8H80z"/></svg></a>
+                    <a href="" class="btn-primary social-links-icons"><svg xmlns="http://www.w3.org/2000/svg" height="16" width="14" viewBox="0 0 448 512"><!--!Font Awesome Free 6.5.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2024 Fonticons, Inc.--><path d="M224.1 141c-63.6 0-114.9 51.3-114.9 114.9s51.3 114.9 114.9 114.9S339 319.5 339 255.9 287.7 141 224.1 141zm0 189.6c-41.1 0-74.7-33.5-74.7-74.7s33.5-74.7 74.7-74.7 74.7 33.5 74.7 74.7-33.6 74.7-74.7 74.7zm146.4-194.3c0 14.9-12 26.8-26.8 26.8-14.9 0-26.8-12-26.8-26.8s12-26.8 26.8-26.8 26.8 12 26.8 26.8zm76.1 27.2c-1.7-35.9-9.9-67.7-36.2-93.9-26.2-26.2-58-34.4-93.9-36.2-37-2.1-147.9-2.1-184.9 0-35.8 1.7-67.6 9.9-93.9 36.1s-34.4 58-36.2 93.9c-2.1 37-2.1 147.9 0 184.9 1.7 35.9 9.9 67.7 36.2 93.9s58 34.4 93.9 36.2c37 2.1 147.9 2.1 184.9 0 35.9-1.7 67.7-9.9 93.9-36.2 26.2-26.2 34.4-58 36.2-93.9 2.1-37 2.1-147.8 0-184.8zM398.8 388c-7.8 19.6-22.9 34.7-42.6 42.6-29.5 11.7-99.5 9-132.1 9s-102.7 2.6-132.1-9c-19.6-7.8-34.7-22.9-42.6-42.6-11.7-29.5-9-99.5-9-132.1s-2.6-102.7 9-132.1c7.8-19.6 22.9-34.7 42.6-42.6 29.5-11.7 99.5-9 132.1-9s102.7-2.6 132.1 9c19.6 7.8 34.7 22.9 42.6 42.6 11.7 29.5 9 99.5 9 132.1s2.7 102.7-9 132.1z"/></svg></a>
+                    <a href="" class="btn-primary social-links-icons"><svg xmlns="http://www.w3.org/2000/svg" height="16" width="16" viewBox="0 0 512 512"><!--!Font Awesome Free 6.5.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2024 Fonticons, Inc.--><path d="M389.2 48h70.6L305.6 224.2 487 464H345L233.7 318.6 106.5 464H35.8L200.7 275.5 26.8 48H172.4L272.9 180.9 389.2 48zM364.4 421.8h39.1L151.1 88h-42L364.4 421.8z"/></svg></a>
+                </div>
+            </div>
+            <div class="footer-menu">
+                <ul class="reset-list">
+                    <li><a href="about-us.html">About Us</a></li>
+                    <li><a href="Villas_and_Rooms.html">Rooms & Villas
+                    </a></li>
+                    <li><a href="restaurants-bars.html">Restaurant & Bars
+                    </a></li>
+                    <li><a href="facilities.html">Facilities</a></li>
+                    <li><a href="Special_offers.html">Special Offers</a></li>
+                    <li><a href="gallery.html">Gallery
+                    </a></li>
+                    <li><a href="contact-us1.html">Contact Us</a></li>
+                    <li><a href="terms&conditions.html">Terms & Conditions</a></li>
+                    
+                </ul>
+            </div>
+            <div class="shop-info">
+                <p>No 22, Street ABCD, Nha Trang, Vietnam
+                </p>
+                <p>Tel: <a href="tel:012345678">(+84) 012 345 678</a></p>
+                
+            </div>
+        </section>
+    </footer>
+    </section>
+
+    <script>
+        const menuNgang = new Swiper (`.the-menu .swiper`, {
+            slidesPerView: 'auto', spaceBetween: 30
+             })
+        document.getElementById(`btn-menu`).addEventListener(`click`, (e) => {
+        document.body.classList.toggle(`show-menu`);
+        })
+    </script>
+
+</body>
+</html>

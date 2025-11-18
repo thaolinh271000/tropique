@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Us</title>
+    <link
+    rel="stylesheet"
+    href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"
+    />
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+    <link rel="stylesheet" href="root.css">
+    <style>
+        h1, h2, p {padding: 0;margin: 0;}
+      
+        .d-flex-column {display: flex; flex-direction: column;}
+        .body {gap: var(--mdDis);}
+        p.intro {
+            font-size: var(--fontSize1);
+            width: 70%;
+            text-align: center;
+            margin-left: auto; margin-right: auto;
+        }
+       
+        .contact-group .fill-box {
+            display: flex;
+            flex-direction: column;
+            gap: var(--mdDis);
+        }
+        .contact-group .fill-box button {
+            width: fit-content;
+            margin-left: auto; margin-right: auto;
+        }
+
+        .fill-box > *:nth-child(3) {display: none;}
+        .fill-box p {
+            width: fit-content;
+            font-weight: 700;
+            color: var(--mainColor1);
+            font-size: var(--fontSize2);
+        }
+        .fill-box input, .fill-box textarea {
+            width: 100%; height: 50px;
+            border: 1px solid var(--mainColor1);
+            border-radius: 10px;
+
+            font-size: var(--fontSize1);
+            font-weight: 400;
+        }
+        .fill-box textarea {height: 200px;}
+        .fill-box ul {
+            width: 100%;
+            gap: var(--mdDis);
+            }
+        .fill-box li, .fill-box .personal-request {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: var(--xsDis);
+        }
+        .fill-box {
+            height: fit-content;
+            margin: 0 var(--mdDis);
+        }
+        .btn-inf {
+            display: flex;
+            justify-content: center; gap: 175px;
+        }
+        
+        @media screen and (min-width: 768px) {
+            /* .fill-box > *:nth-child(3) {display: block;} */
+            .fill-box textarea {height: 100%;}
+            .contact-group {
+                display: grid;
+                grid-template-columns: 1fr 1fr;
+                padding: 0 var(--mdDis);
+            }
+            .contact-group .fill-box {
+                display: grid;
+                grid-template-columns: 1fr 1fr;
+                margin: 0;
+                grid-column: span 2;
+            }
+            .btn-inf {
+                gap: 300px;
+            }
+            
+        }
+        @media screen and (min-width: 992px) {
+            .btn-inf {
+                gap: 480px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <section class="body d-flex-column max-container">
+        <div class="contact-group">
+            <form action="" class="fill-box">
+                <ul class="max-container reset-list d-flex-column">
+                    <li>
+                        <p>Guest's Name</p>
+                        <input type="text">
+                    </li>
+                    <li>
+                        <p>Phone Number</p>
+                        <input type="tel">
+                    </li>
+                    <li>
+                        <p>E-mail</p>
+                        <input type="email">
+                    </li>
+                    
+                </ul>
+                <div class="personal-request">
+                    <p>Personal Request</p>
+                    <textarea name="" id="" cols="10" rows="10"></textarea>
+                </div>
+            </form>
+        </div>
+        <div class="btn-inf center-flex padding-x">
+            <button type="button" class="btn-cancel btn-std" onclick="cancelForm()">Cancel</button>
+            <button type="submit" class="btn-std btn-send">Send</button>
+        </div>
+    </section>
+    <script>
+        function cancelForm() {
+          // Additional cancellation logic can be added here
+          // For now, just preventing the default form submission
+          document.getElementById("myForm").reset();
+        }
+      </script>
+</body>
+</html>
